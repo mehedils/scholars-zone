@@ -1,0 +1,11 @@
+.gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.purple-gradient {
+    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+}
+.counter {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #8b5cf6;
+}
