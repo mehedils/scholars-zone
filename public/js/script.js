@@ -59,9 +59,68 @@ document.querySelectorAll(".counter").forEach((counter) => {
 
 // Mobile Menu Toggle
 function toggleMobileMenu() {
-    // Add mobile menu functionality here
-    console.log("Mobile menu toggled");
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const body = document.body;
+    
+    const isMenuOpen = !mobileMenu.classList.contains('translate-x-full');
+    
+    if (isMenuOpen) {
+        // Close menu
+        closeMobileMenu();
+    } else {
+        // Open menu
+        mobileMenu.classList.remove('translate-x-full');
+        mobileMenuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+        mobileMenuOverlay.classList.add('opacity-100');
+        
+        // Toggle icons
+        hamburgerIcon.classList.add('opacity-0', 'rotate-90');
+        closeIcon.classList.remove('opacity-0');
+        closeIcon.classList.add('opacity-100', 'rotate-0');
+        
+        // Prevent body scroll
+        body.style.overflow = 'hidden';
+    }
 }
+
+function closeMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const body = document.body;
+    
+    // Close menu
+    mobileMenu.classList.add('translate-x-full');
+    mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none');
+    mobileMenuOverlay.classList.remove('opacity-100');
+    
+    // Toggle icons
+    hamburgerIcon.classList.remove('opacity-0', 'rotate-90');
+    closeIcon.classList.add('opacity-0');
+    closeIcon.classList.remove('opacity-100', 'rotate-0');
+    
+    // Re-enable body scroll
+    body.style.overflow = '';
+}
+
+// Close mobile menu when clicking overlay
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    }
+    
+    // Close mobile menu on window resize if open
+    window.addEventListener('resize', function() {
+        if (window.innerWidth >= 768) { // md breakpoint
+            closeMobileMenu();
+        }
+    });
+});
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
