@@ -7,4 +7,7 @@
 <x-frontend.features />
 <x-frontend.featured-destination />
 <x-frontend.country-preview/>
+<x-frontend.consultation-form />
+<x-frontend.student-essentials />
+<x-frontend.footer />
 @endsection
