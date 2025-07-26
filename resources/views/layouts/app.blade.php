@@ -26,6 +26,10 @@
     </head>
     <body class="bg-gray-50">
         @yield('content')
+        
+        <!-- Maintenance Popup -->
+        <x-frontend.maintenance-popup />
+        
         @stack('scripts')
         <script src="{{ asset('js/script.js') }}"></script>
     </body>
