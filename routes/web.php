@@ -63,6 +63,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Social Media Management
     Route::resource('social-media', App\Http\Controllers\Admin\SocialMediaController::class)->names('social-media');
     Route::post('/social-media/{id}/toggle', [App\Http\Controllers\Admin\SocialMediaController::class, 'toggle'])->name('social-media.toggle');
+    
+    // Slider Management
+    Route::resource('sliders', App\Http\Controllers\Admin\SliderController::class)->names('sliders');
+    Route::post('/sliders/{id}/toggle', [App\Http\Controllers\Admin\SliderController::class, 'toggle'])->name('sliders.toggle');
+    Route::post('/sliders/update-order', [App\Http\Controllers\Admin\SliderController::class, 'updateOrder'])->name('sliders.update-order');
     Route::post('/settings/upload-logo', [App\Http\Controllers\Admin\SettingsController::class, 'uploadLogo'])->name('settings.upload-logo');
     Route::post('/settings/delete-logo', [App\Http\Controllers\Admin\SettingsController::class, 'deleteLogo'])->name('settings.delete-logo');
     Route::get('/settings/{key}', [App\Http\Controllers\Admin\SettingsController::class, 'getSetting'])->name('settings.get');
