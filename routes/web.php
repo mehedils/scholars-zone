@@ -59,6 +59,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/settings/notifications', [App\Http\Controllers\Admin\SettingsController::class, 'notifications'])->name('settings.notifications');
     Route::get('/settings/social', [App\Http\Controllers\Admin\SettingsController::class, 'social'])->name('settings.social');
     Route::post('/settings/update', [App\Http\Controllers\Admin\SettingsController::class, 'update'])->name('settings.update');
+    
+    // Social Media Management
+    Route::resource('social-media', App\Http\Controllers\Admin\SocialMediaController::class)->names('social-media');
+    Route::post('/social-media/{id}/toggle', [App\Http\Controllers\Admin\SocialMediaController::class, 'toggle'])->name('social-media.toggle');
     Route::post('/settings/upload-logo', [App\Http\Controllers\Admin\SettingsController::class, 'uploadLogo'])->name('settings.upload-logo');
     Route::post('/settings/delete-logo', [App\Http\Controllers\Admin\SettingsController::class, 'deleteLogo'])->name('settings.delete-logo');
     Route::get('/settings/{key}', [App\Http\Controllers\Admin\SettingsController::class, 'getSetting'])->name('settings.get');
