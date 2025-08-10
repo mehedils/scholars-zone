@@ -9,107 +9,40 @@
 
 @endphp
 
-@push('styles')
-    <style>
-    .hero-slider {
-        position: relative;
-        overflow: hidden;
-    }
-    .slide {
-        display: none;
-        opacity: 0;
-        transition: opacity 0.6s ease-in-out;
-    }
-    .slide.active {
-        display: block;
-        opacity: 1;
-    }
-    </style>
-@endpush
-
-@push('scripts')
-<script>
-let currentSlideIndex = 0;
-const slides = document.querySelectorAll(".slide");
-const dots = document.querySelectorAll(".slider-dot");
-
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === index);
-    });
-    dots.forEach((dot, i) => {
-        dot.style.opacity = i === index ? "1" : "0.5";
-    });
-}
-
-function nextSlide() {
-    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-    showSlide(currentSlideIndex);
-}
-
-function currentSlide(index) {
-    currentSlideIndex = index - 1;
-    showSlide(currentSlideIndex);
-}
-
-// Auto-advance slides
-setInterval(nextSlide, 5000);
-
-// Initialize first slide
-showSlide(0);
-</script>
-@endpush
-
-
-<section class="hero-slider h-[50vh] relative" id="home">
-    @foreach($sliders as $index => $slider)
-        <div class="slide h-full {{ $index === 0 ? 'active' : '' }}">
-            <div class="h-full relative">
-                <div
-                    class="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-blue-900/60"
-                ></div>
-                <div
-                    class="h-full bg-cover bg-center bg-no-repeat flex items-center"
-                    style="background-image: url('{{ $slider['image'] }}');"
-                >
-                    <div
-                        class="container mx-auto px-4 text-white relative z-10"
-                    >
-                        <div class="max-w-3xl" data-aos="fade-up">
-                            <h2 class="text-5xl font-bold mb-6">
-                                {{ $slider['title'] }}
-                            </h2>
-                            <p class="text-xl mb-8">
-                                {{ $slider['description'] }}
-                            </p>
-                            <div class="flex space-x-4">
-                                <button
-                                    class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
-                                >
-                                    Get Started
-                                </button>
-                                <button
-                                    class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition"
-                                >
-                                    Learn More
-                                </button>
+<section class="relative" id="home">
+    <div class="hero-swiper swiper h-[60vh] md:h-[80vh]">
+        <div class="swiper-wrapper">
+            @foreach($sliders as $index => $slider)
+                <div class="swiper-slide">
+                    <div class="h-full relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-blue-900/60"></div>
+                        <div
+                            class="h-full bg-cover bg-center bg-no-repeat flex items-center"
+                            style="background-image: url('{{ $slider['image'] }}');"
+                        >
+                            <div class="container mx-auto px-4 text-white relative z-10">
+                                <div class="max-w-3xl" data-aos="fade-up">
+                                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
+                                        {{ $slider['title'] }}
+                                    </h2>
+                                    <p class="text-base sm:text-lg md:text-xl mb-6 md:mb-8">
+                                        {{ $slider['description'] }}
+                                    </p>
+                                    <div class="flex flex-wrap gap-3 md:gap-4">
+                                        <button class="bg-white text-purple-600 px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                                            Get Started
+                                        </button>
+                                        <button class="border-2 border-white text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition">
+                                            Learn More
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
-    @endforeach
-
-    <!-- Slider Controls -->
-    <div
-        class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2"
-    >
-        @foreach($sliders as $index => $slider)
-            <button
-                class="slider-dot w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100 transition"
-                onclick="currentSlide({{ $index + 1 }})"
-            ></button>
-        @endforeach
+        <div class="swiper-pagination !bottom-5"></div>
     </div>
 </section>

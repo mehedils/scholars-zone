@@ -3,10 +3,10 @@
         <!-- Left side: stacked on mobile -->
         <div class="flex flex-col md:flex-row items-center space-y-1 md:space-y-0 md:space-x-4">
             <span>
-                <i class="fas fa-phone mr-2"></i>+880 1234 567890
+                <i class="fas fa-phone mr-2"></i> @contactPhone
             </span>
             <span>
-                <i class="fas fa-envelope mr-2"></i>info@scholarszonebd.com
+                <i class="fas fa-envelope mr-2"></i> @contactEmail
             </span>
         </div>
 

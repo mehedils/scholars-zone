@@ -4,7 +4,45 @@ AOS.init({
     once: true,
 });
 
-// Hero Slider
+// Hero Slider (Swiper)
+document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Swiper !== 'undefined') {
+        const heroSwiperEl = document.querySelector('.hero-swiper');
+        if (heroSwiperEl) {
+            // eslint-disable-next-line no-undef
+            new Swiper('.hero-swiper', {
+                loop: true,
+                speed: 700,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                effect: 'slide',
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                slidesPerView: 1,
+                centeredSlides: false,
+                spaceBetween: 0,
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                        spaceBetween: 0,
+                    },
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 0,
+                    },
+                    768: {
+                        slidesPerView: 1,
+                        spaceBetween: 0,
+                    },
+                },
+            });
+        }
+    }
+});
 
 // Tab Switcher
 function openTab(evt, tabName) {
@@ -136,11 +174,14 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     });
 });
 
-// Form submission
-document.querySelector("form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    alert("Thank you for your interest! We will contact you soon.");
-});
+// Form submission (only for consultation form)
+const consultationForm = document.getElementById('consultation-form');
+if (consultationForm) {
+    consultationForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Thank you for your interest! We will contact you soon.');
+    });
+}
 
 // Maintenance Popup Functionality
 function showMaintenancePopup() {
