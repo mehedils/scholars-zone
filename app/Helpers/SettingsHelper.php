@@ -72,6 +72,38 @@ class SettingsHelper
     }
 
     /**
+     * Get contact address
+     */
+    public static function contactAddress()
+    {
+        return self::get('contact_address', '123 Gulshan Avenue, Dhaka 1212, Bangladesh');
+    }
+
+    /**
+     * Get business hours
+     */
+    public static function businessHours()
+    {
+        return self::get('business_hours', 'Mon - Sat: 9:00 AM - 6:00 PM');
+    }
+
+    /**
+     * Get footer email
+     */
+    public static function footerEmail()
+    {
+        return self::get('contact_email_footer', 'info@scholarszonebd.com');
+    }
+
+    /**
+     * Get footer phone
+     */
+    public static function footerPhone()
+    {
+        return self::get('contact_phone_footer', '+880 1234 567890');
+    }
+
+    /**
      * Check if maintenance mode is enabled
      */
     public static function isMaintenanceMode()

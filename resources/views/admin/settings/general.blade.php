@@ -15,45 +15,48 @@
         <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data" x-data="settingsForm()">
             @csrf
             <div class="p-6 space-y-6">
-                <!-- Text Settings -->
-                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                    @foreach($settings as $setting)
-                        @if($setting->type === 'text')
-                            <div>
-                                <label for="{{ $setting->key }}" class="block text-sm font-medium text-gray-700">{{ $setting->label }}</label>
-                                <input type="text" 
-                                       id="{{ $setting->key }}" 
-                                       name="settings[{{ $setting->key }}]"
-                                       value="{{ old("settings.{$setting->key}", $setting->value) }}" 
-                                       class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                                @if($setting->description)
-                                    <p class="mt-1 text-xs text-gray-500">{{ $setting->description }}</p>
-                                @endif
-                            </div>
-                        @elseif($setting->type === 'select')
-                            <div>
-                                <label for="{{ $setting->key }}" class="block text-sm font-medium text-gray-700">{{ $setting->label }}</label>
-                                <select id="{{ $setting->key }}" 
-                                        name="settings[{{ $setting->key }}]"
-                                        class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                                    @if($setting->key === 'timezone')
-                                        <option value="UTC" {{ $setting->value === 'UTC' ? 'selected' : '' }}>UTC</option>
-                                        <option value="America/New_York" {{ $setting->value === 'America/New_York' ? 'selected' : '' }}>Eastern Time</option>
-                                        <option value="America/Chicago" {{ $setting->value === 'America/Chicago' ? 'selected' : '' }}>Central Time</option>
-                                        <option value="America/Denver" {{ $setting->value === 'America/Denver' ? 'selected' : '' }}>Mountain Time</option>
-                                        <option value="America/Los_Angeles" {{ $setting->value === 'America/Los_Angeles' ? 'selected' : '' }}>Pacific Time</option>
-                                    @elseif($setting->key === 'date_format')
-                                        <option value="Y-m-d" {{ $setting->value === 'Y-m-d' ? 'selected' : '' }}>YYYY-MM-DD</option>
-                                        <option value="m/d/Y" {{ $setting->value === 'm/d/Y' ? 'selected' : '' }}>MM/DD/YYYY</option>
-                                        <option value="d/m/Y" {{ $setting->value === 'd/m/Y' ? 'selected' : '' }}>DD/MM/YYYY</option>
+                <!-- Basic Site Settings -->
+                <div>
+                    <h4 class="text-md font-medium text-gray-900 mb-4">Basic Site Settings</h4>
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        @foreach($settings as $setting)
+                            @if($setting->type === 'text' && !in_array($setting->key, ['contact_address', 'business_hours', 'contact_email_footer', 'contact_phone_footer']))
+                                <div>
+                                    <label for="{{ $setting->key }}" class="block text-sm font-medium text-gray-700">{{ $setting->label }}</label>
+                                    <input type="text" 
+                                           id="{{ $setting->key }}" 
+                                           name="settings[{{ $setting->key }}]"
+                                           value="{{ old("settings.{$setting->key}", $setting->value) }}" 
+                                           class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    @if($setting->description)
+                                        <p class="mt-1 text-xs text-gray-500">{{ $setting->description }}</p>
                                     @endif
-                                </select>
-                                @if($setting->description)
-                                    <p class="mt-1 text-xs text-gray-500">{{ $setting->description }}</p>
-                                @endif
-                            </div>
-                        @endif
-                    @endforeach
+                                </div>
+                            @elseif($setting->type === 'select')
+                                <div>
+                                    <label for="{{ $setting->key }}" class="block text-sm font-medium text-gray-700">{{ $setting->label }}</label>
+                                    <select id="{{ $setting->key }}" 
+                                            name="settings[{{ $setting->key }}]"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                        @if($setting->key === 'timezone')
+                                            <option value="UTC" {{ $setting->value === 'UTC' ? 'selected' : '' }}>UTC</option>
+                                            <option value="America/New_York" {{ $setting->value === 'America/New_York' ? 'selected' : '' }}>Eastern Time</option>
+                                            <option value="America/Chicago" {{ $setting->value === 'America/Chicago' ? 'selected' : '' }}>Central Time</option>
+                                            <option value="America/Denver" {{ $setting->value === 'America/Denver' ? 'selected' : '' }}>Mountain Time</option>
+                                            <option value="America/Los_Angeles" {{ $setting->value === 'America/Los_Angeles' ? 'selected' : '' }}>Pacific Time</option>
+                                        @elseif($setting->key === 'date_format')
+                                            <option value="Y-m-d" {{ $setting->value === 'Y-m-d' ? 'selected' : '' }}>YYYY-MM-DD</option>
+                                            <option value="m/d/Y" {{ $setting->value === 'm/d/Y' ? 'selected' : '' }}>MM/DD/YYYY</option>
+                                            <option value="d/m/Y" {{ $setting->value === 'd/m/Y' ? 'selected' : '' }}>DD/MM/YYYY</option>
+                                        @endif
+                                    </select>
+                                    @if($setting->description)
+                                        <p class="mt-1 text-xs text-gray-500">{{ $setting->description }}</p>
+                                    @endif
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
 
                 <!-- Logo Upload Section -->
@@ -98,9 +101,47 @@
                     </div>
                 </div>
 
-                <!-- Textarea Settings -->
+                <!-- Contact Information -->
+                <div class="border-t pt-6">
+                    <h4 class="text-md font-medium text-gray-900 mb-4">Contact Information</h4>
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        @foreach($settings as $setting)
+                            @if($setting->type === 'text' && in_array($setting->key, ['contact_email_footer', 'contact_phone_footer', 'business_hours']))
+                                <div>
+                                    <label for="{{ $setting->key }}" class="block text-sm font-medium text-gray-700">{{ $setting->label }}</label>
+                                    <input type="text" 
+                                           id="{{ $setting->key }}" 
+                                           name="settings[{{ $setting->key }}]"
+                                           value="{{ old("settings.{$setting->key}", $setting->value) }}" 
+                                           class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    @if($setting->description)
+                                        <p class="mt-1 text-xs text-gray-500">{{ $setting->description }}</p>
+                                    @endif
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    
+                    <!-- Contact Address (Textarea) -->
+                    @foreach($settings as $setting)
+                        @if($setting->type === 'textarea' && $setting->key === 'contact_address')
+                            <div class="mt-6">
+                                <label for="{{ $setting->key }}" class="block text-sm font-medium text-gray-700">{{ $setting->label }}</label>
+                                <textarea id="{{ $setting->key }}" 
+                                          name="settings[{{ $setting->key }}]"
+                                          rows="3" 
+                                          class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500">{{ old("settings.{$setting->key}", $setting->value) }}</textarea>
+                                @if($setting->description)
+                                    <p class="mt-1 text-xs text-gray-500">{{ $setting->description }}</p>
+                                @endif
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+
+                <!-- Other Textarea Settings -->
                 @foreach($settings as $setting)
-                    @if($setting->type === 'textarea')
+                    @if($setting->type === 'textarea' && $setting->key !== 'contact_address')
                         <div>
                             <label for="{{ $setting->key }}" class="block text-sm font-medium text-gray-700">{{ $setting->label }}</label>
                             <textarea id="{{ $setting->key }}" 
@@ -114,26 +155,29 @@
                     @endif
                 @endforeach
 
-                <!-- Boolean Settings -->
-                <div class="space-y-4">
-                    @foreach($settings as $setting)
-                        @if($setting->type === 'boolean')
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <h4 class="text-sm font-medium text-gray-900">{{ $setting->label }}</h4>
-                                    <p class="text-sm text-gray-500">{{ $setting->description }}</p>
+                <!-- System Settings -->
+                <div class="border-t pt-6">
+                    <h4 class="text-md font-medium text-gray-900 mb-4">System Settings</h4>
+                    <div class="space-y-4">
+                        @foreach($settings as $setting)
+                            @if($setting->type === 'boolean')
+                                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-900">{{ $setting->label }}</h4>
+                                        <p class="text-sm text-gray-500">{{ $setting->description }}</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" 
+                                               id="{{ $setting->key }}"
+                                               name="settings[{{ $setting->key }}]"
+                                               value="1"
+                                               {{ old("settings.{$setting->key}", $setting->value) ? 'checked' : '' }}
+                                               class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                    </div>
                                 </div>
-                                <div class="flex items-center">
-                                    <input type="checkbox" 
-                                           id="{{ $setting->key }}"
-                                           name="settings[{{ $setting->key }}]"
-                                           value="1"
-                                           {{ old("settings.{$setting->key}", $setting->value) ? 'checked' : '' }}
-                                           class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                                </div>
-                            </div>
-                        @endif
-                    @endforeach
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
 
                 <!-- Save Button -->

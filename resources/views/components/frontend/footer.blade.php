@@ -107,24 +107,24 @@
                     <div>
                         <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
                         <div class="space-y-3 text-gray-400">
+                            @php
+                                use App\Helpers\SettingsHelper;
+                            @endphp
                             <div class="flex items-center">
                                 <i class="fas fa-map-marker-alt mr-3"></i>
-                                <span
-                                    >123 Gulshan Avenue, Dhaka 1212,
-                                    Bangladesh</span
-                                >
+                                <span>{{ SettingsHelper::contactAddress() }}</span>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-phone mr-3"></i>
-                                <span>+880 1234 567890</span>
+                                <span>{{ SettingsHelper::footerPhone() }}</span>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-envelope mr-3"></i>
-                                <span>info@scholarszonebd.com</span>
+                                <span>{{ SettingsHelper::footerEmail() }}</span>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-clock mr-3"></i>
-                                <span>Mon - Sat: 9:00 AM - 6:00 PM</span>
+                                <span>{{ SettingsHelper::businessHours() }}</span>
                             </div>
                         </div>
                     </div>
