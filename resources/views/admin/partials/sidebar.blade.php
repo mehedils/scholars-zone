@@ -54,6 +54,14 @@
                     <span>Sliders</span>
                 </a>
             </li>
+            
+            <li>
+                <a href="{{ route('admin.features.index') }}" 
+                   class="flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.features*') ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
+                    <i class="fas fa-star w-5"></i>
+                    <span>Features</span>
+                </a>
+            </li>
         </ul>
         
         <div class="px-4 mb-4 mt-8">

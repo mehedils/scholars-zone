@@ -68,6 +68,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('sliders', App\Http\Controllers\Admin\SliderController::class)->names('sliders');
     Route::post('/sliders/{id}/toggle', [App\Http\Controllers\Admin\SliderController::class, 'toggle'])->name('sliders.toggle');
     Route::post('/sliders/update-order', [App\Http\Controllers\Admin\SliderController::class, 'updateOrder'])->name('sliders.update-order');
+    
+    // Feature Management
+    Route::resource('features', App\Http\Controllers\Admin\FeatureController::class)->names('features');
+    Route::post('/features/{id}/toggle', [App\Http\Controllers\Admin\FeatureController::class, 'toggle'])->name('features.toggle');
+    Route::post('/features/update-order', [App\Http\Controllers\Admin\FeatureController::class, 'updateOrder'])->name('features.update-order');
     Route::post('/settings/upload-logo', [App\Http\Controllers\Admin\SettingsController::class, 'uploadLogo'])->name('settings.upload-logo');
     Route::post('/settings/delete-logo', [App\Http\Controllers\Admin\SettingsController::class, 'deleteLogo'])->name('settings.delete-logo');
     Route::get('/settings/{key}', [App\Http\Controllers\Admin\SettingsController::class, 'getSetting'])->name('settings.get');
