@@ -189,12 +189,80 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     });
 });
 
+// Function to show form messages
+function showMessage(type, message) {
+    const messagesContainer = document.getElementById('form-messages');
+    const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
+    
+    // Hide all messages first
+    messagesContainer.classList.add('hidden');
+    successMessage.classList.add('hidden');
+    errorMessage.classList.add('hidden');
+    
+    // Show appropriate message
+    if (type === 'success') {
+        successMessage.textContent = message;
+        successMessage.classList.remove('hidden');
+    } else {
+        errorMessage.textContent = message;
+        errorMessage.classList.remove('hidden');
+    }
+    
+    // Show messages container
+    messagesContainer.classList.remove('hidden');
+    
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
+        messagesContainer.classList.add('hidden');
+    }, 5000);
+}
+
 // Form submission (only for consultation form)
 const consultationForm = document.getElementById('consultation-form');
 if (consultationForm) {
     consultationForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        alert('Thank you for your interest! We will contact you soon.');
+        
+        // Get form data
+        const formData = new FormData(this);
+        
+        // Show loading state
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
+        submitButton.disabled = true;
+        
+        // Submit form via AJAX
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Show success message
+                showMessage('success', data.message);
+                // Reset form
+                this.reset();
+            } else {
+                // Show error message
+                showMessage('error', data.message || 'Something went wrong. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showMessage('error', 'Something went wrong. Please try again.');
+        })
+        .finally(() => {
+            // Reset button state
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+        });
     });
 }
 

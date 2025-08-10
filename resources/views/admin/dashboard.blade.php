@@ -169,7 +169,7 @@
                         <span class="text-sm font-medium text-gray-900">Add Destination</span>
                     </a>
                     
-                    <a href="{{ route('admin.consultations') }}" 
+                    <a href="{{ route('admin.consultations.index') }}" 
                        class="flex flex-col items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
                         <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
                             <i class="fas fa-comments text-purple-600"></i>

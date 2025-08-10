@@ -2,6 +2,7 @@
 <header class="bg-white shadow-lg sticky top-0 z-50">
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center py-4">
+            <a href="{{route("home")}}">
             <div class="flex items-center">
                 <div
                     class="w-16 h-16 flex items-center justify-center mr-3"
@@ -12,6 +13,7 @@
                     @siteName
                 </h1>
             </div>
+            </a>
             <nav class="hidden md:flex space-x-8">
                 <a
                     href="#home"
@@ -53,7 +55,7 @@
             </button>
         </div>
     </div>
-    
+
     <!-- Mobile Menu & Overlay (positioned below header) -->
     <div class="relative">
         <!-- Mobile Menu -->
@@ -103,12 +105,12 @@
                         <i class="fas fa-envelope mr-3 text-purple-600"></i>Contact
                     </a>
                 </nav>
-                
+
                 <!-- Additional mobile menu content -->
                 <div class="mt-8 pt-6 border-t border-gray-200">
                     <div class="text-center">
                         <h3 class="text-lg font-semibold text-purple-800 mb-4">Get Started Today</h3>
-                        <a href="#contact" 
+                        <a href="#contact"
                            class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors duration-200"
                            onclick="closeMobileMenu()">
                             Book Consultation

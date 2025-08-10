@@ -13,6 +13,9 @@ Route::get("/", [HomeController::class, 'index'])->name('home');
 Route::get('/destinations', [DestinationController::class, 'index'])->name('destinations.index');
 Route::get('/destinations/{destination}', [DestinationController::class, 'show'])->name('destination.show');
 
+// Consultation Form Submission
+Route::post('/consultation', [App\Http\Controllers\ConsultationController::class, 'store'])->name('consultation.store');
+
 
 
 // Authentication
@@ -21,7 +24,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.attempt');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Admin routes
-Route::middleware([])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     
@@ -46,12 +49,8 @@ Route::middleware([])->prefix('admin')->name('admin.')->group(function () {
     Route::post('/destinations/upload-file', [AdminDestinationController::class, 'uploadFile'])->name('destinations.upload-file');
     
     // Consultations Management
-    Route::get('/consultations', function() {
-        return view('admin.consultations.index');
-    })->name('consultations');
-    Route::get('/consultations/{consultation}', function($consultation) {
-        return view('admin.consultations.show', compact('consultation'));
-    })->name('consultations.show');
+    Route::resource('consultations', App\Http\Controllers\Admin\ConsultationController::class)->names('consultations');
+    Route::post('/consultations/{consultation}/update-status', [App\Http\Controllers\Admin\ConsultationController::class, 'updateStatus'])->name('consultations.update-status');
     
     // Settings Routes
     Route::get('/settings/general', [App\Http\Controllers\Admin\SettingsController::class, 'general'])->name('settings.general');

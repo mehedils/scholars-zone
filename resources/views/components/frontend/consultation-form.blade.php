@@ -16,7 +16,16 @@
                 class="bg-white rounded-lg shadow-lg p-8"
                 data-aos="fade-up"
             >
-                <form id="consultation-form" class="grid md:grid-cols-2 gap-6">
+                <form id="consultation-form" class="grid md:grid-cols-2 gap-6" action="{{ route('consultation.store') }}" method="POST">
+                    @csrf
+                    
+                    <!-- Success/Error Messages -->
+                    <div id="form-messages" class="md:col-span-2 hidden">
+                        <div id="success-message" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 hidden">
+                        </div>
+                        <div id="error-message" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 hidden">
+                        </div>
+                    </div>
                     <div>
                         <label
                             class="block text-gray-700 font-semibold mb-2"
@@ -24,6 +33,7 @@
                         >
                         <input
                             type="text"
+                            name="first_name"
                             class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                             placeholder="Your first name"
                             required
@@ -37,6 +47,7 @@
                         >
                         <input
                             type="text"
+                            name="last_name"
                             class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                             placeholder="Your last name"
                             required
@@ -50,6 +61,7 @@
                         >
                         <input
                             type="email"
+                            name="email"
                             class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                             placeholder="your@email.com"
                             required
@@ -63,6 +75,7 @@
                         >
                         <input
                             type="tel"
+                            name="phone"
                             class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                             placeholder="+880 1234 567890"
                             required
@@ -75,14 +88,15 @@
                             >Preferred Country</label
                         >
                         <select
+                            name="preferred_country"
                             class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                         >
-                            <option>Select a country</option>
-                            <option>United States</option>
-                            <option>United Kingdom</option>
-                            <option>Canada</option>
-                            <option>Australia</option>
-                            <option>Germany</option>
+                            <option value="">Select a country</option>
+                            <option value="United States">United States</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Germany">Germany</option>
                         </select>
                     </div>
 
@@ -92,13 +106,14 @@
                             >Study Level</label
                         >
                         <select
+                            name="study_level"
                             class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                         >
-                            <option>Select study level</option>
-                            <option>Bachelor's Degree</option>
-                            <option>Master's Degree</option>
-                            <option>PhD</option>
-                            <option>Diploma</option>
+                            <option value="">Select study level</option>
+                            <option value="Bachelor's Degree">Bachelor's Degree</option>
+                            <option value="Master's Degree">Master's Degree</option>
+                            <option value="PhD">PhD</option>
+                            <option value="Diploma">Diploma</option>
                         </select>
                     </div>
 
@@ -108,17 +123,18 @@
                             >Preferred Subject</label
                         >
                         <select
+                            name="preferred_subject"
                             class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                         >
-                            <option>Select subject area</option>
-                            <option>Computer Science</option>
-                            <option>Engineering</option>
-                            <option>Business & Management</option>
-                            <option>Medicine & Health</option>
-                            <option>Arts & Design</option>
-                            <option>Social Sciences</option>
-                            <option>Natural Sciences</option>
-                            <option>Law</option>
+                            <option value="">Select subject area</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Business & Management">Business & Management</option>
+                            <option value="Medicine & Health">Medicine & Health</option>
+                            <option value="Arts & Design">Arts & Design</option>
+                            <option value="Social Sciences">Social Sciences</option>
+                            <option value="Natural Sciences">Natural Sciences</option>
+                            <option value="Law">Law</option>
                         </select>
                     </div>
 
@@ -128,13 +144,14 @@
                             >Preferred Intake</label
                         >
                         <select
+                            name="preferred_intake"
                             class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                         >
-                            <option>Select intake</option>
-                            <option>Fall 2024</option>
-                            <option>Spring 2025</option>
-                            <option>Summer 2025</option>
-                            <option>Fall 2025</option>
+                            <option value="">Select intake</option>
+                            <option value="Fall 2024">Fall 2024</option>
+                            <option value="Spring 2025">Spring 2025</option>
+                            <option value="Summer 2025">Summer 2025</option>
+                            <option value="Fall 2025">Fall 2025</option>
                         </select>
                     </div>
 
@@ -144,6 +161,7 @@
                             >Message</label
                         >
                         <textarea
+                            name="message"
                             class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                             rows="4"
                             placeholder="Tell us about your study goals and any specific questions..."

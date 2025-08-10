@@ -40,7 +40,7 @@
             </li>
             
             <li>
-                <a href="{{ route('admin.consultations') }}" 
+                <a href="{{ route('admin.consultations.index') }}" 
                    class="flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.consultations*') ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
                     <i class="fas fa-comments w-5"></i>
                     <span>Consultations</span>
