@@ -295,3 +295,92 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Maintenance Popup Functionality
+function showMaintenancePopup() {
+    const popup = document.getElementById('maintenance-popup');
+    const popupContent = popup.querySelector('div');
+    
+    // Show popup
+    popup.classList.remove('opacity-0', 'pointer-events-none');
+    popup.classList.add('opacity-100');
+    
+    // Animate content
+    setTimeout(() => {
+        popupContent.classList.remove('scale-95');
+        popupContent.classList.add('scale-100');
+    }, 100);
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+}
+
+function hideMaintenancePopup() {
+    const popup = document.getElementById('maintenance-popup');
+    const popupContent = popup.querySelector('div');
+    
+    // Animate content
+    popupContent.classList.remove('scale-100');
+    popupContent.classList.add('scale-95');
+    
+    // Hide popup
+    setTimeout(() => {
+        popup.classList.add('opacity-0', 'pointer-events-none');
+        popup.classList.remove('opacity-100');
+    }, 200);
+    
+    // Re-enable body scroll
+    document.body.style.overflow = '';
+    
+    // Set a flag in localStorage to remember user dismissed the popup
+    localStorage.setItem('maintenance-popup-dismissed', 'true');
+}
+
+// Initialize maintenance popup
+document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('maintenance-popup');
+    
+    // Check if popup was already dismissed
+    const wasDismissed = localStorage.getItem('maintenance-popup-dismissed');
+    
+    if (!wasDismissed) {
+        // Show popup after a short delay
+        setTimeout(showMaintenancePopup, 1000);
+    }
+    
+    // Close button functionality
+    const closeButton = document.getElementById('close-maintenance-popup');
+    if (closeButton) {
+        closeButton.addEventListener('click', hideMaintenancePopup);
+    }
+    
+    // Continue browsing button
+    const continueButton = document.getElementById('continue-browsing');
+    if (continueButton) {
+        continueButton.addEventListener('click', hideMaintenancePopup);
+    }
+    
+    // Notify me button
+    const notifyButton = document.getElementById('notify-me');
+    if (notifyButton) {
+        notifyButton.addEventListener('click', function() {
+            // You can implement email notification functionality here
+            alert('We\'ll notify you when maintenance is complete!');
+            hideMaintenancePopup();
+        });
+    }
+    
+    // Close popup when clicking outside
+    popup.addEventListener('click', function(e) {
+        if (e.target === popup) {
+            hideMaintenancePopup();
+        }
+    });
+    
+    // Close popup with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !popup.classList.contains('opacity-0')) {
+            hideMaintenancePopup();
+        }
+    });
+});
