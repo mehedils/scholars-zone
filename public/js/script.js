@@ -1,11 +1,18 @@
-// Initialize AOS
-AOS.init({
-    duration: 1000,
-    once: true,
-});
-
 // Hero Slider (Swiper)
 document.addEventListener('DOMContentLoaded', function () {
+    // Initialize AOS with a small delay to ensure it's fully loaded
+    setTimeout(() => {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100,
+                easing: 'ease-in-out',
+            });
+        } else {
+            console.warn('AOS library not loaded. Animations will not work.');
+        }
+    }, 100);
     if (typeof Swiper !== 'undefined') {
         const heroSwiperEl = document.querySelector('.hero-swiper');
         if (heroSwiperEl) {

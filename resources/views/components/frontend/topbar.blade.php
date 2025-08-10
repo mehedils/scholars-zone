@@ -11,19 +11,6 @@
         </div>
 
         <!-- Right side: social icons -->
-        <div class="flex items-center space-x-4">
-            <a href="#" class="hover:text-purple-200">
-                <i class="fab fa-facebook"></i>
-            </a>
-            <a href="#" class="hover:text-purple-200">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="hover:text-purple-200">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="#" class="hover:text-purple-200">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </div>
+        <x-social-media color="text-white" hoverColor="hover:text-purple-200" />
     </div>
 </div>

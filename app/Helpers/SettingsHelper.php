@@ -110,4 +110,108 @@ class SettingsHelper
     {
         return self::get('date_format', 'm/d/Y');
     }
+
+    // Social Media Methods
+    /**
+     * Check if social media is enabled
+     */
+    public static function isSocialEnabled()
+    {
+        return self::get('social_enabled', '1') === '1';
+    }
+
+    /**
+     * Get Facebook URL
+     */
+    public static function socialFacebook()
+    {
+        return self::get('social_facebook');
+    }
+
+    /**
+     * Get Twitter URL
+     */
+    public static function socialTwitter()
+    {
+        return self::get('social_twitter');
+    }
+
+    /**
+     * Get LinkedIn URL
+     */
+    public static function socialLinkedIn()
+    {
+        return self::get('social_linkedin');
+    }
+
+    /**
+     * Get Instagram URL
+     */
+    public static function socialInstagram()
+    {
+        return self::get('social_instagram');
+    }
+
+    /**
+     * Get YouTube URL
+     */
+    public static function socialYouTube()
+    {
+        return self::get('social_youtube');
+    }
+
+    /**
+     * Get WhatsApp number
+     */
+    public static function socialWhatsApp()
+    {
+        return self::get('social_whatsapp');
+    }
+
+    /**
+     * Get Telegram username
+     */
+    public static function socialTelegram()
+    {
+        return self::get('social_telegram');
+    }
+
+    /**
+     * Get all social media platforms
+     */
+    public static function getSocialPlatforms()
+    {
+        $platforms = self::get('social_platforms');
+        if ($platforms) {
+            return json_decode($platforms, true) ?: [];
+        }
+        return [];
+    }
+
+    /**
+     * Get enabled social media platforms
+     */
+    public static function getEnabledSocialPlatforms()
+    {
+        $platforms = self::getSocialPlatforms();
+        return array_filter($platforms, function($platform) {
+            return isset($platform['enabled']) && $platform['enabled'] && !empty($platform['url']);
+        });
+    }
+
+    /**
+     * Get all social media links (legacy method for backward compatibility)
+     */
+    public static function getAllSocialLinks()
+    {
+        $platforms = self::getEnabledSocialPlatforms();
+        $links = [];
+        
+        foreach ($platforms as $platform) {
+            $key = strtolower($platform['name']);
+            $links[$key] = $platform['url'];
+        }
+        
+        return $links;
+    }
 }

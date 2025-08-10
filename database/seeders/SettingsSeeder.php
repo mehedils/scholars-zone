@@ -195,6 +195,83 @@ class SettingsSeeder extends Seeder
                 'group' => 'notifications',
                 'label' => 'User Notifications',
                 'description' => 'Send notifications to regular users'
+            ],
+
+            // Social Media Settings
+            [
+                'key' => 'social_enabled',
+                'value' => '1',
+                'type' => 'boolean',
+                'group' => 'social',
+                'label' => 'Enable Social Media',
+                'description' => 'Show social media links in topbar'
+            ],
+            [
+                'key' => 'social_platforms',
+                'value' => json_encode([
+                    [
+                        'name' => 'Facebook',
+                        'icon' => 'fab fa-facebook',
+                        'url' => 'https://facebook.com/scholarszone',
+                        'color' => 'text-blue-600',
+                        'hover_color' => 'hover:text-blue-800',
+                        'enabled' => true
+                    ],
+                    [
+                        'name' => 'Twitter',
+                        'icon' => 'fab fa-twitter',
+                        'url' => 'https://twitter.com/scholarszone',
+                        'color' => 'text-blue-400',
+                        'hover_color' => 'hover:text-blue-600',
+                        'enabled' => true
+                    ],
+                    [
+                        'name' => 'LinkedIn',
+                        'icon' => 'fab fa-linkedin',
+                        'url' => 'https://linkedin.com/company/scholarszone',
+                        'color' => 'text-blue-700',
+                        'hover_color' => 'hover:text-blue-900',
+                        'enabled' => true
+                    ],
+                    [
+                        'name' => 'Instagram',
+                        'icon' => 'fab fa-instagram',
+                        'url' => 'https://instagram.com/scholarszone',
+                        'color' => 'text-pink-600',
+                        'hover_color' => 'hover:text-pink-800',
+                        'enabled' => true
+                    ],
+                    [
+                        'name' => 'YouTube',
+                        'icon' => 'fab fa-youtube',
+                        'url' => 'https://youtube.com/@scholarszone',
+                        'color' => 'text-red-600',
+                        'hover_color' => 'hover:text-red-800',
+                        'enabled' => true
+                    ],
+                    [
+                        'name' => 'WhatsApp',
+                        'icon' => 'fab fa-whatsapp',
+                        'url' => '+1234567890',
+                        'color' => 'text-green-600',
+                        'hover_color' => 'hover:text-green-800',
+                        'enabled' => true,
+                        'is_phone' => true
+                    ],
+                    [
+                        'name' => 'Telegram',
+                        'icon' => 'fab fa-telegram',
+                        'url' => '@scholarszone',
+                        'color' => 'text-blue-500',
+                        'hover_color' => 'hover:text-blue-700',
+                        'enabled' => true,
+                        'is_username' => true
+                    ]
+                ]),
+                'type' => 'json',
+                'group' => 'social',
+                'label' => 'Social Media Platforms',
+                'description' => 'Configure your social media platforms'
             ]
         ];
 

@@ -17,32 +17,7 @@
                             Bangladeshi students achieve their dreams of
                             international education.
                         </p>
-                        <div class="flex space-x-4">
-                            <a
-                                href="#"
-                                class="text-gray-400 hover:text-purple-400 transition"
-                            >
-                                <i class="fab fa-facebook text-xl"></i>
-                            </a>
-                            <a
-                                href="#"
-                                class="text-gray-400 hover:text-purple-400 transition"
-                            >
-                                <i class="fab fa-twitter text-xl"></i>
-                            </a>
-                            <a
-                                href="#"
-                                class="text-gray-400 hover:text-purple-400 transition"
-                            >
-                                <i class="fab fa-linkedin text-xl"></i>
-                            </a>
-                            <a
-                                href="#"
-                                class="text-gray-400 hover:text-purple-400 transition"
-                            >
-                                <i class="fab fa-instagram text-xl"></i>
-                            </a>
-                        </div>
+                        <x-social-media color="text-gray-400" hoverColor="hover:text-purple-400" />
                     </div>
 
                     <div>

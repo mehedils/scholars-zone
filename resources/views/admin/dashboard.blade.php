@@ -177,7 +177,7 @@
                         <span class="text-sm font-medium text-gray-900">View Consultations</span>
                     </a>
                     
-                    <a href="{{ route('admin.settings') }}" 
+                    <a href="{{ route('admin.settings.general') }}" 
                        class="flex flex-col items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
                         <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-3">
                             <i class="fas fa-cog text-yellow-600"></i>

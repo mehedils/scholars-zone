@@ -24,6 +24,7 @@ The Scholars Zone Global application includes a comprehensive settings managemen
 - **Email**: SMTP settings and notification preferences
 - **Security**: Authentication and security settings
 - **Notifications**: Notification preferences
+- **Social**: Social media links and preferences
 
 ## Database Structure
 
@@ -67,6 +68,14 @@ SettingsHelper::set('site_name', 'New Site Name');
 
 {{-- Using full helper class --}}
 <p>{{ \App\Helpers\SettingsHelper::contactPhone() }}</p>
+
+{{-- Social media component --}}
+<x-social-media color="text-white" hoverColor="hover:text-blue-500" />
+
+{{-- Individual social links --}}
+@if(@socialFacebook)
+    <a href="@socialFacebook">Facebook</a>
+@endif
 ```
 
 ### In JavaScript
@@ -115,6 +124,16 @@ window.adminDashboard.showNotification('Setting updated!', 'success');
 - `admin_notifications` - Enable/disable admin notifications
 - `consultation_notifications` - Notify on new consultations
 - `user_notifications` - Enable/disable user notifications
+
+### Social Media Settings
+- `social_enabled` - Enable/disable social media display
+- `social_facebook` - Facebook page URL
+- `social_twitter` - Twitter profile URL
+- `social_linkedin` - LinkedIn company page URL
+- `social_instagram` - Instagram profile URL
+- `social_youtube` - YouTube channel URL
+- `social_whatsapp` - WhatsApp business number
+- `social_telegram` - Telegram username or channel
 
 ## File Upload
 

@@ -10,16 +10,34 @@ use Illuminate\Support\Facades\Validator;
 
 class SettingsController extends Controller
 {
-    public function index()
+    public function general()
     {
-        $groups = ['general', 'email', 'security', 'notifications'];
-        $settings = [];
-        
-        foreach ($groups as $group) {
-            $settings[$group] = Setting::getByGroup($group);
-        }
-        
-        return view('admin.settings', compact('settings', 'groups'));
+        $settings = Setting::getByGroup('general');
+        return view('admin.settings.general', compact('settings'));
+    }
+
+    public function email()
+    {
+        $settings = Setting::getByGroup('email');
+        return view('admin.settings.email', compact('settings'));
+    }
+
+    public function security()
+    {
+        $settings = Setting::getByGroup('security');
+        return view('admin.settings.security', compact('settings'));
+    }
+
+    public function notifications()
+    {
+        $settings = Setting::getByGroup('notifications');
+        return view('admin.settings.notifications', compact('settings'));
+    }
+
+    public function social()
+    {
+        $settings = Setting::getByGroup('social');
+        return view('admin.settings.social', compact('settings'));
     }
 
     public function update(Request $request)
@@ -75,6 +93,27 @@ class SettingsController extends Controller
                 // Handle boolean values
                 if ($setting->type === 'boolean') {
                     $value = $value ? '1' : '0';
+                }
+                
+                // Handle JSON settings (like social_platforms)
+                if ($setting->type === 'json' && is_array($value)) {
+                    // Clean up the array and remove empty entries
+                    $cleanPlatforms = [];
+                    foreach ($value as $platform) {
+                        if (!empty($platform['name']) && !empty($platform['icon']) && !empty($platform['url'])) {
+                            $cleanPlatforms[] = [
+                                'name' => $platform['name'],
+                                'icon' => $platform['icon'],
+                                'url' => $platform['url'],
+                                'color' => $platform['color'] ?? 'text-blue-600',
+                                'hover_color' => $platform['hover_color'] ?? 'hover:text-blue-800',
+                                'enabled' => isset($platform['enabled']) ? (bool)$platform['enabled'] : true,
+                                'is_phone' => isset($platform['is_phone']) ? (bool)$platform['is_phone'] : false,
+                                'is_username' => isset($platform['is_username']) ? (bool)$platform['is_username'] : false,
+                            ];
+                        }
+                    }
+                    $value = json_encode($cleanPlatforms);
                 }
                 
                 Setting::set($key, $value);

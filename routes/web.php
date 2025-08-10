@@ -52,9 +52,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         return view('admin.consultations.show', compact('consultation'));
     })->name('consultations.show');
     
-    // Settings
-    Route::get('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('settings');
-    Route::post('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'update'])->name('settings.update');
+    // Settings Routes
+    Route::get('/settings/general', [App\Http\Controllers\Admin\SettingsController::class, 'general'])->name('settings.general');
+    Route::get('/settings/email', [App\Http\Controllers\Admin\SettingsController::class, 'email'])->name('settings.email');
+    Route::get('/settings/security', [App\Http\Controllers\Admin\SettingsController::class, 'security'])->name('settings.security');
+    Route::get('/settings/notifications', [App\Http\Controllers\Admin\SettingsController::class, 'notifications'])->name('settings.notifications');
+    Route::get('/settings/social', [App\Http\Controllers\Admin\SettingsController::class, 'social'])->name('settings.social');
+    Route::post('/settings/update', [App\Http\Controllers\Admin\SettingsController::class, 'update'])->name('settings.update');
     Route::post('/settings/upload-logo', [App\Http\Controllers\Admin\SettingsController::class, 'uploadLogo'])->name('settings.upload-logo');
     Route::post('/settings/delete-logo', [App\Http\Controllers\Admin\SettingsController::class, 'deleteLogo'])->name('settings.delete-logo');
     Route::get('/settings/{key}', [App\Http\Controllers\Admin\SettingsController::class, 'getSetting'])->name('settings.get');
