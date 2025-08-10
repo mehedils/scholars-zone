@@ -1,5 +1,85 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\Admin\DestinationController as AdminDestinationController;
+use App\Http\Controllers\HomeController;
 
-Route::get("/", fn() => view("frontend.home"));
+Route::get("/", [HomeController::class, 'index'])->name('home');
+
+// Frontend Destination Routes
+Route::get('/destinations', [DestinationController::class, 'index'])->name('destinations.index');
+Route::get('/destinations/{destination}', [DestinationController::class, 'show'])->name('destination.show');
+
+
+
+// Authentication
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.attempt');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Admin routes
+Route::middleware([])->prefix('admin')->name('admin.')->group(function () {
+    // Dashboard
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    
+    // Users Management
+    Route::get('/users', function() {
+        return view('admin.users.index');
+    })->name('users');
+    Route::get('/users/create', function() {
+        return view('admin.users.create');
+    })->name('users.create');
+    Route::get('/users/{user}', function($user) {
+        return view('admin.users.show', compact('user'));
+    })->name('users.show');
+    Route::get('/users/{user}/edit', function($user) {
+        return view('admin.users.edit', compact('user'));
+    })->name('users.edit');
+    
+    // Destinations Management
+    Route::resource('destinations', AdminDestinationController::class)->names('destinations');
+    Route::post('/destinations/{destination}/toggle-status', [AdminDestinationController::class, 'toggleStatus'])->name('destinations.toggle-status');
+    Route::post('/destinations/{destination}/toggle-featured', [AdminDestinationController::class, 'toggleFeatured'])->name('destinations.toggle-featured');
+    Route::post('/destinations/upload-file', [AdminDestinationController::class, 'uploadFile'])->name('destinations.upload-file');
+    
+    // Consultations Management
+    Route::get('/consultations', function() {
+        return view('admin.consultations.index');
+    })->name('consultations');
+    Route::get('/consultations/{consultation}', function($consultation) {
+        return view('admin.consultations.show', compact('consultation'));
+    })->name('consultations.show');
+    
+    // Settings Routes
+    Route::get('/settings/general', [App\Http\Controllers\Admin\SettingsController::class, 'general'])->name('settings.general');
+    Route::get('/settings/email', [App\Http\Controllers\Admin\SettingsController::class, 'email'])->name('settings.email');
+    Route::get('/settings/security', [App\Http\Controllers\Admin\SettingsController::class, 'security'])->name('settings.security');
+    Route::get('/settings/notifications', [App\Http\Controllers\Admin\SettingsController::class, 'notifications'])->name('settings.notifications');
+    Route::get('/settings/social', [App\Http\Controllers\Admin\SettingsController::class, 'social'])->name('settings.social');
+    Route::post('/settings/update', [App\Http\Controllers\Admin\SettingsController::class, 'update'])->name('settings.update');
+    
+    // Social Media Management
+    Route::resource('social-media', App\Http\Controllers\Admin\SocialMediaController::class)->names('social-media');
+    Route::post('/social-media/{id}/toggle', [App\Http\Controllers\Admin\SocialMediaController::class, 'toggle'])->name('social-media.toggle');
+    
+    // Slider Management
+    Route::resource('sliders', App\Http\Controllers\Admin\SliderController::class)->names('sliders');
+    Route::post('/sliders/{id}/toggle', [App\Http\Controllers\Admin\SliderController::class, 'toggle'])->name('sliders.toggle');
+    Route::post('/sliders/update-order', [App\Http\Controllers\Admin\SliderController::class, 'updateOrder'])->name('sliders.update-order');
+    
+    // Feature Management
+    Route::resource('features', App\Http\Controllers\Admin\FeatureController::class)->names('features');
+    Route::post('/features/{id}/toggle', [App\Http\Controllers\Admin\FeatureController::class, 'toggle'])->name('features.toggle');
+    Route::post('/features/update-order', [App\Http\Controllers\Admin\FeatureController::class, 'updateOrder'])->name('features.update-order');
+    Route::post('/settings/upload-logo', [App\Http\Controllers\Admin\SettingsController::class, 'uploadLogo'])->name('settings.upload-logo');
+    Route::post('/settings/delete-logo', [App\Http\Controllers\Admin\SettingsController::class, 'deleteLogo'])->name('settings.delete-logo');
+    Route::get('/settings/{key}', [App\Http\Controllers\Admin\SettingsController::class, 'getSetting'])->name('settings.get');
+    
+    // Profile
+    Route::get('/profile', function() {
+        return view('admin.profile');
+    })->name('profile');
+});

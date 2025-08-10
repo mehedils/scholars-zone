@@ -1,12 +1,3 @@
-@props(['header' => 'header1'   ])
-
-@php
-    $header = [
-        'logo' => asset('images/logo.png'),
-        'title' => 'Scholars Zone Global',
-    ];
-@endphp
-
 <!-- Header -->
 <header class="bg-white shadow-lg sticky top-0 z-50">
     <div class="container mx-auto px-4">
@@ -15,10 +6,10 @@
                 <div
                     class="w-16 h-16 flex items-center justify-center mr-3"
                 >
-                    <img src="{{ $header['logo'] }}" alt="{{ $header['title'] }}" class="w-full h-full object-cover">
+                    <img src="@siteLogo" alt="@siteName" class="w-full h-full object-cover">
                 </div>
                 <h1 class="text-2xl font-bold text-purple-800">
-                    {{ $header['title'] }}
+                    @siteName
                 </h1>
             </div>
             <nav class="hidden md:flex space-x-8">
@@ -37,7 +28,7 @@
                 >Services</a
                 >
                 <a
-                    href="#destinations"
+                    href="{{ route('destinations.index') }}"
                     class="text-gray-700 hover:text-purple-600 transition"
                 >Destinations</a
                 >
@@ -91,7 +82,7 @@
                         <i class="fas fa-cogs mr-3 text-purple-600"></i>Services
                     </a>
                     <a
-                        href="#destinations"
+                        href="{{ route('destinations.index') }}"
                         class="text-lg text-gray-700 hover:text-purple-600 transition-colors duration-200 py-3 border-b border-gray-100"
                         onclick="closeMobileMenu()"
                     >

@@ -1,15 +1,63 @@
-// Initialize AOS
-AOS.init({
-    duration: 1000,
-    once: true,
+// Hero Slider (Swiper)
+document.addEventListener('DOMContentLoaded', function () {
+    // Initialize AOS with a small delay to ensure it's fully loaded
+    setTimeout(() => {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100,
+                easing: 'ease-in-out',
+            });
+        } else {
+            console.warn('AOS library not loaded. Animations will not work.');
+        }
+    }, 100);
+    if (typeof Swiper !== 'undefined') {
+        const heroSwiperEl = document.querySelector('.hero-swiper');
+        if (heroSwiperEl) {
+            // eslint-disable-next-line no-undef
+            new Swiper('.hero-swiper', {
+                loop: true,
+                speed: 700,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                effect: 'slide',
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                slidesPerView: 1,
+                centeredSlides: false,
+                spaceBetween: 0,
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                        spaceBetween: 0,
+                    },
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 0,
+                    },
+                    768: {
+                        slidesPerView: 1,
+                        spaceBetween: 0,
+                    },
+                },
+            });
+        }
+    }
 });
-
-// Hero Slider
 
 // Tab Switcher
 function openTab(evt, tabName) {
     const tabcontent = document.getElementsByClassName("tab-content");
     const tablinks = document.getElementsByClassName("tab-btn");
+    const targetTab = document.getElementById(tabName);
+
+    if (!targetTab) return;
 
     for (let i = 0; i < tabcontent.length; i++) {
         tabcontent[i].classList.remove("active");
@@ -20,7 +68,7 @@ function openTab(evt, tabName) {
         tablinks[i].classList.add("bg-gray-200", "text-gray-700");
     }
 
-    document.getElementById(tabName).classList.add("active");
+    targetTab.classList.add("active");
     evt.currentTarget.classList.add("active", "bg-purple-600", "text-white");
     evt.currentTarget.classList.remove("bg-gray-200", "text-gray-700");
 }
@@ -63,8 +111,10 @@ function toggleMobileMenu() {
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     const hamburgerIcon = document.getElementById('hamburger-icon');
     const closeIcon = document.getElementById('close-icon');
-    const body = document.body;
     
+    if (!mobileMenu || !mobileMenuOverlay || !hamburgerIcon || !closeIcon) return;
+    
+    const body = document.body;
     const isMenuOpen = !mobileMenu.classList.contains('translate-x-full');
     
     if (isMenuOpen) {
@@ -91,6 +141,9 @@ function closeMobileMenu() {
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     const hamburgerIcon = document.getElementById('hamburger-icon');
     const closeIcon = document.getElementById('close-icon');
+    
+    if (!mobileMenu || !mobileMenuOverlay || !hamburgerIcon || !closeIcon) return;
+    
     const body = document.body;
     
     // Close menu
@@ -136,10 +189,111 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     });
 });
 
-// Form submission
-document.querySelector("form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    alert("Thank you for your interest! We will contact you soon.");
+// Form submission (only for consultation form)
+const consultationForm = document.getElementById('consultation-form');
+if (consultationForm) {
+    consultationForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Thank you for your interest! We will contact you soon.');
+    });
+}
+
+// Maintenance Popup Functionality
+function showMaintenancePopup() {
+    const popup = document.getElementById('maintenance-popup');
+    if (!popup) return;
+    
+    const popupContent = popup.querySelector('div');
+    if (!popupContent) return;
+    
+    // Show popup
+    popup.classList.remove('opacity-0', 'pointer-events-none');
+    popup.classList.add('opacity-100');
+    
+    // Animate content
+    setTimeout(() => {
+        popupContent.classList.remove('scale-95');
+        popupContent.classList.add('scale-100');
+    }, 100);
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+}
+
+function hideMaintenancePopup() {
+    const popup = document.getElementById('maintenance-popup');
+    if (!popup) return;
+    
+    const popupContent = popup.querySelector('div');
+    if (!popupContent) return;
+    
+    // Animate content
+    popupContent.classList.remove('scale-100');
+    popupContent.classList.add('scale-95');
+    
+    // Hide popup
+    setTimeout(() => {
+        popup.classList.add('opacity-0', 'pointer-events-none');
+        popup.classList.remove('opacity-100');
+    }, 200);
+    
+    // Re-enable body scroll
+    document.body.style.overflow = '';
+    
+    // Set a flag in localStorage to remember user dismissed the popup
+    localStorage.setItem('maintenance-popup-dismissed', 'true');
+}
+
+// Initialize maintenance popup
+document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('maintenance-popup');
+    
+    // Only initialize if popup exists
+    if (popup) {
+        // Check if popup was already dismissed
+        const wasDismissed = localStorage.getItem('maintenance-popup-dismissed');
+        
+        if (!wasDismissed) {
+            // Show popup after a short delay
+            setTimeout(showMaintenancePopup, 1000);
+        }
+        
+        // Close button functionality
+        const closeButton = document.getElementById('close-maintenance-popup');
+        if (closeButton) {
+            closeButton.addEventListener('click', hideMaintenancePopup);
+        }
+        
+        // Continue browsing button
+        const continueButton = document.getElementById('continue-browsing');
+        if (continueButton) {
+            continueButton.addEventListener('click', hideMaintenancePopup);
+        }
+        
+        // Notify me button
+        const notifyButton = document.getElementById('notify-me');
+        if (notifyButton) {
+            notifyButton.addEventListener('click', function() {
+                // You can implement email notification functionality here
+                alert('We\'ll notify you when maintenance is complete!');
+                hideMaintenancePopup();
+            });
+        }
+        
+        // Close popup when clicking outside
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                hideMaintenancePopup();
+            }
+        });
+        
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !popup.classList.contains('opacity-0')) {
+                hideMaintenancePopup();
+            }
+        });
+    }
 });
 
 // Maintenance Popup Functionality

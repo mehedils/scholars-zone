@@ -16,7 +16,7 @@
                 class="bg-white rounded-lg shadow-lg p-8"
                 data-aos="fade-up"
             >
-                <form class="grid md:grid-cols-2 gap-6">
+                <form id="consultation-form" class="grid md:grid-cols-2 gap-6">
                     <div>
                         <label
                             class="block text-gray-700 font-semibold mb-2"

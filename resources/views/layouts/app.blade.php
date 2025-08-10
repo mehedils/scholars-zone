@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{{ config('app.name', 'Scholars Zone Global') }}</title>
+        <title>@siteName</title>
+
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -25,11 +26,15 @@
         @stack('styles')
     </head>
     <body class="bg-gray-50">
+
+<x-frontend.topbar />
+<x-frontend.header />
         @yield('content')
-        
+            
         <!-- Maintenance Popup -->
+        <x-frontend.footer />
         <x-frontend.maintenance-popup />
-        
+
         @stack('scripts')
         <script src="{{ asset('js/script.js') }}"></script>
     </body>
