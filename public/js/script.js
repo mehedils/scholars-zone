@@ -55,6 +55,9 @@ document.addEventListener('DOMContentLoaded', function () {
 function openTab(evt, tabName) {
     const tabcontent = document.getElementsByClassName("tab-content");
     const tablinks = document.getElementsByClassName("tab-btn");
+    const targetTab = document.getElementById(tabName);
+
+    if (!targetTab) return;
 
     for (let i = 0; i < tabcontent.length; i++) {
         tabcontent[i].classList.remove("active");
@@ -65,7 +68,7 @@ function openTab(evt, tabName) {
         tablinks[i].classList.add("bg-gray-200", "text-gray-700");
     }
 
-    document.getElementById(tabName).classList.add("active");
+    targetTab.classList.add("active");
     evt.currentTarget.classList.add("active", "bg-purple-600", "text-white");
     evt.currentTarget.classList.remove("bg-gray-200", "text-gray-700");
 }
@@ -108,8 +111,10 @@ function toggleMobileMenu() {
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     const hamburgerIcon = document.getElementById('hamburger-icon');
     const closeIcon = document.getElementById('close-icon');
-    const body = document.body;
     
+    if (!mobileMenu || !mobileMenuOverlay || !hamburgerIcon || !closeIcon) return;
+    
+    const body = document.body;
     const isMenuOpen = !mobileMenu.classList.contains('translate-x-full');
     
     if (isMenuOpen) {
@@ -136,6 +141,9 @@ function closeMobileMenu() {
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     const hamburgerIcon = document.getElementById('hamburger-icon');
     const closeIcon = document.getElementById('close-icon');
+    
+    if (!mobileMenu || !mobileMenuOverlay || !hamburgerIcon || !closeIcon) return;
+    
     const body = document.body;
     
     // Close menu
@@ -193,7 +201,10 @@ if (consultationForm) {
 // Maintenance Popup Functionality
 function showMaintenancePopup() {
     const popup = document.getElementById('maintenance-popup');
+    if (!popup) return;
+    
     const popupContent = popup.querySelector('div');
+    if (!popupContent) return;
     
     // Show popup
     popup.classList.remove('opacity-0', 'pointer-events-none');
@@ -211,7 +222,10 @@ function showMaintenancePopup() {
 
 function hideMaintenancePopup() {
     const popup = document.getElementById('maintenance-popup');
+    if (!popup) return;
+    
     const popupContent = popup.querySelector('div');
+    if (!popupContent) return;
     
     // Animate content
     popupContent.classList.remove('scale-100');
@@ -234,47 +248,50 @@ function hideMaintenancePopup() {
 document.addEventListener('DOMContentLoaded', function() {
     const popup = document.getElementById('maintenance-popup');
     
-    // Check if popup was already dismissed
-    const wasDismissed = localStorage.getItem('maintenance-popup-dismissed');
-    
-    if (!wasDismissed) {
-        // Show popup after a short delay
-        setTimeout(showMaintenancePopup, 1000);
-    }
-    
-    // Close button functionality
-    const closeButton = document.getElementById('close-maintenance-popup');
-    if (closeButton) {
-        closeButton.addEventListener('click', hideMaintenancePopup);
-    }
-    
-    // Continue browsing button
-    const continueButton = document.getElementById('continue-browsing');
-    if (continueButton) {
-        continueButton.addEventListener('click', hideMaintenancePopup);
-    }
-    
-    // Notify me button
-    const notifyButton = document.getElementById('notify-me');
-    if (notifyButton) {
-        notifyButton.addEventListener('click', function() {
-            // You can implement email notification functionality here
-            alert('We\'ll notify you when maintenance is complete!');
-            hideMaintenancePopup();
+    // Only initialize if popup exists
+    if (popup) {
+        // Check if popup was already dismissed
+        const wasDismissed = localStorage.getItem('maintenance-popup-dismissed');
+        
+        if (!wasDismissed) {
+            // Show popup after a short delay
+            setTimeout(showMaintenancePopup, 1000);
+        }
+        
+        // Close button functionality
+        const closeButton = document.getElementById('close-maintenance-popup');
+        if (closeButton) {
+            closeButton.addEventListener('click', hideMaintenancePopup);
+        }
+        
+        // Continue browsing button
+        const continueButton = document.getElementById('continue-browsing');
+        if (continueButton) {
+            continueButton.addEventListener('click', hideMaintenancePopup);
+        }
+        
+        // Notify me button
+        const notifyButton = document.getElementById('notify-me');
+        if (notifyButton) {
+            notifyButton.addEventListener('click', function() {
+                // You can implement email notification functionality here
+                alert('We\'ll notify you when maintenance is complete!');
+                hideMaintenancePopup();
+            });
+        }
+        
+        // Close popup when clicking outside
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                hideMaintenancePopup();
+            }
+        });
+        
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !popup.classList.contains('opacity-0')) {
+                hideMaintenancePopup();
+            }
         });
     }
-    
-    // Close popup when clicking outside
-    popup.addEventListener('click', function(e) {
-        if (e.target === popup) {
-            hideMaintenancePopup();
-        }
-    });
-    
-    // Close popup with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && !popup.classList.contains('opacity-0')) {
-            hideMaintenancePopup();
-        }
-    });
 });

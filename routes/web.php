@@ -3,8 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\Admin\DestinationController as AdminDestinationController;
+use App\Http\Controllers\HomeController;
 
-Route::get("/", fn() => view("frontend.home"));
+Route::get("/", [HomeController::class, 'index'])->name('home');
+
+// Frontend Destination Routes
+Route::get('/destinations', [DestinationController::class, 'index'])->name('destinations.index');
+Route::get('/destinations/{destination}', [DestinationController::class, 'show'])->name('destination.show');
+
+
 
 // Authentication
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -12,7 +21,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.attempt');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Admin routes
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware([])->prefix('admin')->name('admin.')->group(function () {
     // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     
@@ -31,18 +40,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     })->name('users.edit');
     
     // Destinations Management
-    Route::get('/destinations', function() {
-        return view('admin.destinations.index');
-    })->name('destinations');
-    Route::get('/destinations/create', function() {
-        return view('admin.destinations.create');
-    })->name('destinations.create');
-    Route::get('/destinations/{destination}', function($destination) {
-        return view('admin.destinations.show', compact('destination'));
-    })->name('destinations.show');
-    Route::get('/destinations/{destination}/edit', function($destination) {
-        return view('admin.destinations.edit', compact('destination'));
-    })->name('destinations.edit');
+    Route::resource('destinations', AdminDestinationController::class)->names('destinations');
+    Route::post('/destinations/{destination}/toggle-status', [AdminDestinationController::class, 'toggleStatus'])->name('destinations.toggle-status');
+    Route::post('/destinations/{destination}/toggle-featured', [AdminDestinationController::class, 'toggleFeatured'])->name('destinations.toggle-featured');
+    Route::post('/destinations/upload-file', [AdminDestinationController::class, 'uploadFile'])->name('destinations.upload-file');
     
     // Consultations Management
     Route::get('/consultations', function() {

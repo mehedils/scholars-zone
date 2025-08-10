@@ -25,11 +25,14 @@
         @stack('styles')
     </head>
     <body class="bg-gray-50">
+
+<x-frontend.topbar />
+<x-frontend.header />
         @yield('content')
-        
+            
         <!-- Maintenance Popup -->
+        <x-frontend.footer />
         <x-frontend.maintenance-popup />
-        
         @stack('scripts')
         <script src="{{ asset('js/script.js') }}"></script>
     </body>

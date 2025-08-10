@@ -22,7 +22,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600">Total Destinations</p>
-                    <p class="text-3xl font-bold text-gray-900">15</p>
+                    <p class="text-3xl font-bold text-gray-900">{{ $totalDestinations }}</p>
                 </div>
                 <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                     <i class="fas fa-globe text-blue-600 text-xl"></i>
@@ -34,7 +34,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600">Active</p>
-                    <p class="text-3xl font-bold text-gray-900">12</p>
+                    <p class="text-3xl font-bold text-gray-900">{{ $activeDestinations }}</p>
                 </div>
                 <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                     <i class="fas fa-check text-green-600 text-xl"></i>
@@ -46,7 +46,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600">Draft</p>
-                    <p class="text-3xl font-bold text-gray-900">3</p>
+                    <p class="text-3xl font-bold text-gray-900">{{ $draftDestinations }}</p>
                 </div>
                 <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
                     <i class="fas fa-edit text-yellow-600 text-xl"></i>
@@ -58,7 +58,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600">Featured</p>
-                    <p class="text-3xl font-bold text-gray-900">5</p>
+                    <p class="text-3xl font-bold text-gray-900">{{ $featuredDestinations }}</p>
                 </div>
                 <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                     <i class="fas fa-star text-purple-600 text-xl"></i>
@@ -109,167 +109,67 @@
 
     <!-- Destinations Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Sample Destination Cards -->
+        @forelse($destinations as $destination)
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                <i class="fas fa-flag text-white text-4xl"></i>
+            <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center relative">
+                @if($destination->featured_image)
+                    <img src="{{ $destination->featured_image_url }}" alt="{{ $destination->name }}" class="w-full h-full object-cover">
+                @else
+                    <i class="fas fa-flag text-white text-4xl"></i>
+                @endif
+                @if($destination->is_featured)
+                    <div class="absolute top-2 right-2">
+                        <span class="bg-yellow-400 text-yellow-900 px-2 py-1 rounded-full text-xs font-semibold">
+                            <i class="fas fa-star mr-1"></i>Featured
+                        </span>
+                    </div>
+                @endif
             </div>
             <div class="p-6">
                 <div class="flex items-center justify-between mb-2">
-                    <h3 class="text-lg font-semibold text-gray-900">Canada</h3>
-                    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                        Active
+                    <h3 class="text-lg font-semibold text-gray-900">{{ $destination->name }}</h3>
+                    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full {{ $destination->is_active ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                        {{ $destination->is_active ? 'Active' : 'Draft' }}
                     </span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">North America's premier study destination with world-class universities and diverse culture.</p>
+                <p class="text-gray-600 text-sm mb-4">{{ Str::limit($destination->short_description, 100) }}</p>
                 <div class="flex items-center justify-between">
                     <div class="flex items-center space-x-2">
-                        <span class="text-xs text-gray-500">Universities: 15</span>
-                        <span class="text-xs text-gray-500">Programs: 120</span>
+                        <span class="text-xs text-gray-500">Universities: {{ $destination->universities_count }}</span>
+                        <span class="text-xs text-gray-500">Programs: {{ $destination->programs_count }}</span>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <a href="#" class="text-blue-600 hover:text-blue-900">
+                        <a href="{{ route('admin.destinations.show', $destination) }}" class="text-blue-600 hover:text-blue-900">
                             <i class="fas fa-eye"></i>
                         </a>
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">
+                        <a href="{{ route('admin.destinations.edit', $destination) }}" class="text-indigo-600 hover:text-indigo-900">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <button class="text-red-600 hover:text-red-900">
-                            <i class="fas fa-trash"></i>
-                        </button>
+                        <form action="{{ route('admin.destinations.destroy', $destination) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this destination?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-600 hover:text-red-900">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
-                <i class="fas fa-flag text-white text-4xl"></i>
-            </div>
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-2">
-                    <h3 class="text-lg font-semibold text-gray-900">Germany</h3>
-                    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                        Active
-                    </span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">European excellence in education with affordable tuition and strong industry connections.</p>
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-xs text-gray-500">Universities: 12</span>
-                        <span class="text-xs text-gray-500">Programs: 95</span>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <a href="#" class="text-blue-600 hover:text-blue-900">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <button class="text-red-600 hover:text-red-900">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
+        @empty
+        <div class="col-span-full">
+            <div class="text-center py-12">
+                <i class="fas fa-globe text-gray-400 text-6xl mb-4"></i>
+                <h3 class="text-lg font-medium text-gray-900 mb-2">No destinations found</h3>
+                <p class="text-gray-600 mb-6">Get started by creating your first destination.</p>
+                <a href="{{ route('admin.destinations.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                    <i class="fas fa-plus mr-2"></i>Add Destination
+                </a>
             </div>
         </div>
+        @endforelse
 
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
-                <i class="fas fa-flag text-white text-4xl"></i>
-            </div>
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-2">
-                    <h3 class="text-lg font-semibold text-gray-900">Australia</h3>
-                    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                        Draft
-                    </span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">Land down under offering quality education and amazing lifestyle opportunities.</p>
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-xs text-gray-500">Universities: 8</span>
-                        <span class="text-xs text-gray-500">Programs: 75</span>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <a href="#" class="text-blue-600 hover:text-blue-900">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <button class="text-red-600 hover:text-red-900">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div class="h-48 bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center">
-                <i class="fas fa-flag text-white text-4xl"></i>
-            </div>
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-2">
-                    <h3 class="text-lg font-semibold text-gray-900">United Kingdom</h3>
-                    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                        Active
-                    </span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">Historic universities with modern facilities and global recognition.</p>
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-xs text-gray-500">Universities: 20</span>
-                        <span class="text-xs text-gray-500">Programs: 150</span>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <a href="#" class="text-blue-600 hover:text-blue-900">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <button class="text-red-600 hover:text-red-900">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div class="h-48 bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center">
-                <i class="fas fa-flag text-white text-4xl"></i>
-            </div>
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-2">
-                    <h3 class="text-lg font-semibold text-gray-900">Netherlands</h3>
-                    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                        Active
-                    </span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">Innovative education system with English-taught programs and international focus.</p>
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-xs text-gray-500">Universities: 10</span>
-                        <span class="text-xs text-gray-500">Programs: 85</span>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <a href="#" class="text-blue-600 hover:text-blue-900">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <button class="text-red-600 hover:text-red-900">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <!-- Add New Destination Card -->
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
             <div class="h-48 bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center">
                 <i class="fas fa-plus text-white text-4xl"></i>
@@ -285,5 +185,13 @@
             </div>
         </div>
     </div>
+
+    <!-- Pagination -->
+    @if($destinations->hasPages())
+    <div class="mt-6">
+        {{ $destinations->links() }}
+    </div>
+    @endif
 </div>
 @endsection
+
