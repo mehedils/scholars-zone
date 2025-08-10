@@ -16,17 +16,19 @@ class DatabaseSeeder extends Seeder
     {
         // Seed admin user
         User::updateOrCreate(
-            ['email' => 'admin@admin.com'],
+            ["email" => "admin@admin.com"],
             [
-                'name' => 'Administrator',
-                'password' => Hash::make('password'),
-                'is_admin' => true,
-            ]
+                "name" => "Administrator",
+                "password" => Hash::make("password"),
+                "is_admin" => true,
+            ],
         );
 
         // Seed settings
         $this->call([
             SettingsSeeder::class,
+            FeatureSeeder::class,
+            SliderSeeder::class,
         ]);
     }
 }
