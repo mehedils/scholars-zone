@@ -4,12 +4,12 @@
                     <div>
                         <div class="flex items-center mb-6">
                             <div
-                                class="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center mr-3"
+                                class="w-10 h-10 rounded-lg flex items-center justify-center mr-3"
                             >
-                                <i class="fas fa-graduation-cap text-white"></i>
+                            <img src="@siteLogo" alt="logo" class="w-10 h-10">
                             </div>
                             <h3 class="text-xl font-bold">
-                                Scholars Zone Global
+                                @siteName
                             </h3>
                         </div>
                         <p class="text-gray-400 mb-4">
@@ -56,6 +56,13 @@
                                     href="#"
                                     class="hover:text-purple-400 transition"
                                     >Blog</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="{{ route('contact') }}"
+                                    class="hover:text-purple-400 transition"
+                                    >Contact Us</a
                                 >
                             </li>
                         </ul>

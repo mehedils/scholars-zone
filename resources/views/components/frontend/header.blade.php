@@ -40,7 +40,7 @@
                 >Blog</a
                 >
                 <a
-                    href="#contact"
+                    href="{{ route('contact') }}"
                     class="text-gray-700 hover:text-purple-600 transition"
                 >Contact</a
                 >
@@ -98,7 +98,7 @@
                         <i class="fas fa-blog mr-3 text-purple-600"></i>Blog
                     </a>
                     <a
-                        href="#contact"
+                        href="{{ route('contact') }}"
                         class="text-lg text-gray-700 hover:text-purple-600 transition-colors duration-200 py-3 border-b border-gray-100"
                         onclick="closeMobileMenu()"
                     >

@@ -16,6 +16,10 @@ Route::get('/destinations/{destination}', [DestinationController::class, 'show']
 // Consultation Form Submission
 Route::post('/consultation', [App\Http\Controllers\ConsultationController::class, 'store'])->name('consultation.store');
 
+// Contact Page Routes
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+
 
 
 // Authentication
@@ -51,6 +55,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Consultations Management
     Route::resource('consultations', App\Http\Controllers\Admin\ConsultationController::class)->names('consultations');
     Route::post('/consultations/{consultation}/update-status', [App\Http\Controllers\Admin\ConsultationController::class, 'updateStatus'])->name('consultations.update-status');
+    
+    // Contact Messages Management
+    Route::resource('contacts', App\Http\Controllers\Admin\ContactController::class)->names('contacts');
+    Route::post('/contacts/{contact}/update-status', [App\Http\Controllers\Admin\ContactController::class, 'updateStatus'])->name('contacts.update-status');
     
     // Settings Routes
     Route::get('/settings/general', [App\Http\Controllers\Admin\SettingsController::class, 'general'])->name('settings.general');
