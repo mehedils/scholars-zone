@@ -7,6 +7,7 @@ use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class SettingsController extends Controller
 {
@@ -38,6 +39,42 @@ class SettingsController extends Controller
     {
         $settings = Setting::getByGroup('social');
         return view('admin.settings.social', compact('settings'));
+    }
+
+    public function changePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'required|string',
+            'new_password' => 'required|string|min:8',
+            'new_password_confirmation' => 'required|string',
+        ], [
+            'current_password.required' => 'Current password is required.',
+            'new_password.required' => 'New password is required.',
+            'new_password.min' => 'New password must be at least 8 characters long.',
+            'new_password.confirmed' => 'Password confirmation does not match.',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $user = auth()->user();
+
+        // Check if current password is correct
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'Current password is incorrect.'])->withInput();
+        }
+
+        // Check if new password is different from current password
+        if (Hash::check($request->new_password, $user->password)) {
+            return back()->withErrors(['new_password' => 'New password must be different from current password.'])->withInput();
+        }
+
+        // Update password
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return back()->with('success', 'Password changed successfully!');
     }
 
     public function update(Request $request)

@@ -70,6 +70,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/settings/notifications', [App\Http\Controllers\Admin\SettingsController::class, 'notifications'])->name('settings.notifications');
     Route::get('/settings/social', [App\Http\Controllers\Admin\SettingsController::class, 'social'])->name('settings.social');
     Route::post('/settings/update', [App\Http\Controllers\Admin\SettingsController::class, 'update'])->name('settings.update');
+    Route::post('/settings/change-password', [App\Http\Controllers\Admin\SettingsController::class, 'changePassword'])->name('settings.change-password');
     
     // Social Media Management
     Route::resource('social-media', App\Http\Controllers\Admin\SocialMediaController::class)->names('social-media');

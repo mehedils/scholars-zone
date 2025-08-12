@@ -1,28 +1,28 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="space-y-6">
+<div class="space-y-4 sm:space-y-6">
     <!-- Page Header -->
-    <div class="flex items-center justify-between">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Edit Student Essential</h1>
-            <p class="text-gray-600">Update the student essential service information.</p>
+            <h1 class="text-xl sm:text-2xl font-bold text-gray-900">Edit Student Essential</h1>
+            <p class="text-sm sm:text-base text-gray-600">Update the student essential service information.</p>
         </div>
         <a href="{{ route('admin.student-essentials.index') }}" 
-           class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+           class="bg-gray-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-sm sm:text-base">
             <i class="fas fa-arrow-left mr-2"></i>Back to List
         </a>
     </div>
 
     <!-- Form -->
-    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
         <form action="{{ route('admin.student-essentials.update', $studentEssential->id) }}" method="POST">
             @csrf
             @method('PUT')
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 <!-- Title -->
-                <div class="md:col-span-2">
+                <div class="lg:col-span-2">
                     <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Title *</label>
                     <input type="text" 
                            name="title" 
@@ -37,7 +37,7 @@
                 </div>
 
                 <!-- Description -->
-                <div class="md:col-span-2">
+                <div class="lg:col-span-2">
                     <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Description *</label>
                     <textarea name="description" 
                               id="description" 
@@ -60,7 +60,7 @@
                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                            placeholder="e.g., fas fa-university"
                            required>
-                    <p class="text-sm text-gray-500 mt-1">Use FontAwesome icon classes (e.g., fas fa-university)</p>
+                    <p class="text-xs sm:text-sm text-gray-500 mt-1">Use FontAwesome icon classes (e.g., fas fa-university)</p>
                     @error('icon')
                         <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -76,7 +76,7 @@
                            min="0"
                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                            placeholder="0">
-                    <p class="text-sm text-gray-500 mt-1">Lower numbers appear first</p>
+                    <p class="text-xs sm:text-sm text-gray-500 mt-1">Lower numbers appear first</p>
                     @error('order')
                         <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -93,7 +93,7 @@
                                class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                         <span class="ml-2 text-sm font-medium text-gray-700">Show Learn More Link</span>
                     </label>
-                    <p class="text-sm text-gray-500 mt-1">Enable to show a "Learn more" link</p>
+                    <p class="text-xs sm:text-sm text-gray-500 mt-1">Enable to show a "Learn more" link</p>
                 </div>
 
                 <!-- Learn More URL -->
@@ -105,14 +105,14 @@
                            value="{{ old('learn_more_url', $studentEssential->learn_more_url) }}"
                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                            placeholder="https://example.com/learn-more">
-                    <p class="text-sm text-gray-500 mt-1">URL for the learn more link (optional)</p>
+                    <p class="text-xs sm:text-sm text-gray-500 mt-1">URL for the learn more link (optional)</p>
                     @error('learn_more_url')
                         <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <!-- Is Active -->
-                <div class="md:col-span-2">
+                <div class="lg:col-span-2">
                     <label class="flex items-center">
                         <input type="checkbox" 
                                name="is_active" 
@@ -122,18 +122,18 @@
                                class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                         <span class="ml-2 text-sm font-medium text-gray-700">Active</span>
                     </label>
-                    <p class="text-sm text-gray-500 mt-1">Enable to show this student essential on the website</p>
+                    <p class="text-xs sm:text-sm text-gray-500 mt-1">Enable to show this student essential on the website</p>
                 </div>
             </div>
 
             <!-- Submit Button -->
-            <div class="flex justify-end space-x-3 mt-8">
+            <div class="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3 mt-6 sm:mt-8">
                 <a href="{{ route('admin.student-essentials.index') }}" 
-                   class="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+                   class="bg-gray-600 text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-center text-sm sm:text-base">
                     Cancel
                 </a>
                 <button type="submit" 
-                        class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                        class="bg-blue-600 text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm sm:text-base">
                     <i class="fas fa-save mr-2"></i>Update Student Essential
                 </button>
             </div>

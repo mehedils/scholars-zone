@@ -11,10 +11,31 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
 </head>
-<body class="bg-gray-100">
-    <div class="flex h-screen">
+<body class="bg-gray-100" x-data="{ sidebarOpen: false }">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Mobile sidebar overlay -->
+        <div x-show="sidebarOpen" 
+             x-transition:enter="transition-opacity ease-linear duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition-opacity ease-linear duration-300"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             class="fixed inset-0 z-40 bg-gray-600 bg-opacity-75 lg:hidden"
+             @click="sidebarOpen = false">
+        </div>
+
         <!-- Sidebar -->
-        @include('admin.partials.sidebar')
+        <div class="fixed inset-y-0 left-0 z-50 w-64 bg-gray-800 transform lg:translate-x-0 lg:static lg:inset-0 h-screen"
+             :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
+             x-transition:enter="transition ease-in-out duration-300 transform"
+             x-transition:enter-start="-translate-x-full lg:translate-x-0"
+             x-transition:enter-end="translate-x-0"
+             x-transition:leave="transition ease-in-out duration-300 transform"
+             x-transition:leave-start="translate-x-0"
+             x-transition:leave-end="-translate-x-full lg:translate-x-0">
+            @include('admin.partials.sidebar')
+        </div>
         
         <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-hidden">
@@ -23,7 +44,7 @@
             
             <!-- Main Content Area -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
-                <div class="container mx-auto px-6 py-8">
+                <div class="container mx-auto px-4 sm:px-6 py-4 sm:py-8">
                     @if(session('success'))
                         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
                             {{ session('success') }}

@@ -1,20 +1,28 @@
 <!-- Sidebar -->
-<aside class="bg-gray-800 text-white w-64 min-h-screen flex-shrink-0">
-    <div class="p-6">
-        <div class="flex items-center space-x-3">
-            <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                <i class="fas fa-graduation-cap text-white"></i>
+<aside class="bg-gray-800 text-white w-64 h-full flex flex-col">
+    <div class="p-4 sm:p-6 flex-shrink-0">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-graduation-cap text-white"></i>
+                </div>
+                <h1 class="text-lg sm:text-xl font-bold">@siteName</h1>
             </div>
-            <h1 class="text-xl font-bold">@siteName</h1>
+            <!-- Mobile close button -->
+            <button @click="sidebarOpen = false" 
+                    class="lg:hidden p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
     </div>
     
-    <nav class="mt-6">
+    <!-- Scrollable Navigation Area -->
+    <nav class="flex-1 overflow-y-auto overflow-x-hidden min-h-0">
         <div class="px-4 mb-4">
             <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Main</p>
         </div>
         
-        <ul class="space-y-2 px-4">
+        <ul class="space-y-2 px-4 pb-4">
             <li>
                 <a href="{{ route('admin.dashboard') }}" 
                    class="flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.dashboard') ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
@@ -80,11 +88,11 @@
             </li>
         </ul>
         
-        <div class="px-4 mb-4 mt-8">
+        <div class="px-4 mb-4">
             <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Settings</p>
         </div>
         
-        <ul class="space-y-2 px-4">
+        <ul class="space-y-2 px-4 pb-4">
             <li>
                 <a href="{{ route('admin.settings.general') }}" 
                    class="flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.settings.general') ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
@@ -136,13 +144,13 @@
     </nav>
     
     <!-- User Info at Bottom -->
-    <div class="absolute bottom-0 w-64 p-4 border-t border-gray-700">
+    <div class="p-4 border-t border-gray-700 flex-shrink-0">
         <div class="flex items-center space-x-3">
             <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
                 <i class="fas fa-user text-white text-sm"></i>
             </div>
-            <div class="flex-1">
-                <p class="text-sm font-medium text-white">{{ auth()->user()->name }}</p>
+            <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-white truncate">{{ auth()->user()->name }}</p>
                 <p class="text-xs text-gray-400">Administrator</p>
             </div>
         </div>

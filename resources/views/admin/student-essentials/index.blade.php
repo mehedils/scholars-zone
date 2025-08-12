@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="space-y-6">
+<div class="space-y-4 sm:space-y-6">
     <!-- Page Header -->
-    <div class="flex items-center justify-between">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Student Essentials</h1>
-            <p class="text-gray-600">Manage your student essential services displayed on the our-services page.</p>
+            <h1 class="text-xl sm:text-2xl font-bold text-gray-900">Student Essentials</h1>
+            <p class="text-sm sm:text-base text-gray-600">Manage your student essential services displayed on the our-services page.</p>
         </div>
         <a href="{{ route('admin.student-essentials.create') }}" 
-           class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+           class="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm sm:text-base">
             <i class="fas fa-plus mr-2"></i>Add Student Essential
         </a>
     </div>
@@ -34,32 +34,33 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Icon</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Learn More</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Icon</th>
+                            <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                            <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">Description</th>
+                            <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">Learn More</th>
+                            <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">Order</th>
+                            <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200" id="student-essentials-tbody">
                         @foreach($studentEssentials as $essential)
                         <tr data-id="{{ $essential->id }}" class="cursor-move">
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                                    <i class="{{ $essential->icon }} text-purple-600 text-xl"></i>
+                            <td class="px-3 sm:px-6 py-4 whitespace-nowrap">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <i class="{{ $essential->icon }} text-purple-600 text-lg sm:text-xl"></i>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-3 sm:px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm font-medium text-gray-900">{{ $essential->title }}</div>
+                                <div class="text-xs text-gray-500 lg:hidden mt-1">{{ Str::limit($essential->description, 50) }}</div>
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-3 sm:px-6 py-4 hidden lg:table-cell">
                                 <div class="text-sm text-gray-900">
                                     {{ Str::limit($essential->description, 80) }}
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-3 sm:px-6 py-4 whitespace-nowrap hidden md:table-cell">
                                 @if($essential->show_learn_more)
                                     <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Enabled</span>
                                     @if($essential->learn_more_url)
@@ -71,10 +72,10 @@
                                     <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Disabled</span>
                                 @endif
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-3 sm:px-6 py-4 whitespace-nowrap hidden sm:table-cell">
                                 <div class="text-sm text-gray-900">{{ $essential->order }}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-3 sm:px-6 py-4 whitespace-nowrap">
                                 <button onclick="toggleEssential({{ $essential->id }})" 
                                         class="toggle-btn inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors duration-200"
                                         data-id="{{ $essential->id }}"
@@ -86,7 +87,7 @@
                                     @endif
                                 </button>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
                                 <div class="flex space-x-2">
                                     <a href="{{ route('admin.student-essentials.show', $essential->id) }}" 
                                        class="text-blue-600 hover:text-blue-900">
@@ -113,12 +114,12 @@
                 </table>
             </div>
         @else
-            <div class="text-center py-12">
-                <i class="fas fa-graduation-cap text-4xl text-gray-300 mb-4"></i>
-                <h3 class="text-lg font-medium text-gray-900 mb-2">No student essentials found</h3>
-                <p class="text-gray-600 mb-6">Get started by creating your first student essential service.</p>
+            <div class="text-center py-8 sm:py-12">
+                <i class="fas fa-graduation-cap text-3xl sm:text-4xl text-gray-300 mb-4"></i>
+                <h3 class="text-base sm:text-lg font-medium text-gray-900 mb-2">No student essentials found</h3>
+                <p class="text-sm sm:text-base text-gray-600 mb-6">Get started by creating your first student essential service.</p>
                 <a href="{{ route('admin.student-essentials.create') }}" 
-                   class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                   class="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm sm:text-base">
                     <i class="fas fa-plus mr-2"></i>Create First Student Essential
                 </a>
             </div>
@@ -153,7 +154,10 @@ new Sortable(document.getElementById('student-essentials-tbody'), {
             if (data.success) {
                 // Update order numbers in the table
                 document.querySelectorAll('#student-essentials-tbody tr').forEach((row, index) => {
-                    row.querySelector('td:nth-child(5) .text-sm').textContent = index;
+                    const orderCell = row.querySelector('td:nth-child(5) .text-sm');
+                    if (orderCell) {
+                        orderCell.textContent = index;
+                    }
                 });
             }
         });
