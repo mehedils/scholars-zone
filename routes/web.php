@@ -13,6 +13,9 @@ Route::get("/", [HomeController::class, 'index'])->name('home');
 Route::get('/destinations', [DestinationController::class, 'index'])->name('destinations.index');
 Route::get('/destinations/{destination}', [DestinationController::class, 'show'])->name('destination.show');
 
+// Our Services Route
+Route::get('/our-services', [App\Http\Controllers\StudentEssentialController::class, 'index'])->name('our-services');
+
 // Consultation Form Submission
 Route::post('/consultation', [App\Http\Controllers\ConsultationController::class, 'store'])->name('consultation.store');
 
@@ -81,6 +84,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('features', App\Http\Controllers\Admin\FeatureController::class)->names('features');
     Route::post('/features/{id}/toggle', [App\Http\Controllers\Admin\FeatureController::class, 'toggle'])->name('features.toggle');
     Route::post('/features/update-order', [App\Http\Controllers\Admin\FeatureController::class, 'updateOrder'])->name('features.update-order');
+    
+    // Student Essentials Management
+    Route::resource('student-essentials', App\Http\Controllers\Admin\StudentEssentialController::class)->names('student-essentials');
+    Route::post('/student-essentials/{studentEssential}/toggle', [App\Http\Controllers\Admin\StudentEssentialController::class, 'toggle'])->name('student-essentials.toggle');
+    Route::post('/student-essentials/update-order', [App\Http\Controllers\Admin\StudentEssentialController::class, 'updateOrder'])->name('student-essentials.update-order');
+    
     Route::post('/settings/upload-logo', [App\Http\Controllers\Admin\SettingsController::class, 'uploadLogo'])->name('settings.upload-logo');
     Route::post('/settings/delete-logo', [App\Http\Controllers\Admin\SettingsController::class, 'deleteLogo'])->name('settings.delete-logo');
     Route::get('/settings/{key}', [App\Http\Controllers\Admin\SettingsController::class, 'getSetting'])->name('settings.get');

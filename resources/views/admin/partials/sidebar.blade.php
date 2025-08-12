@@ -70,6 +70,14 @@
                     <span>Features</span>
                 </a>
             </li>
+            
+            <li>
+                <a href="{{ route('admin.student-essentials.index') }}" 
+                   class="flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.student-essentials*') ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
+                    <i class="fas fa-graduation-cap w-5"></i>
+                    <span>Student Essentials</span>
+                </a>
+            </li>
         </ul>
         
         <div class="px-4 mb-4 mt-8">

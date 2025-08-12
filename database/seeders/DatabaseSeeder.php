@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             FeatureSeeder::class,
             SliderSeeder::class,
             DestinationSeeder::class,
+            StudentEssentialSeeder::class,
         ]);
     }
 }

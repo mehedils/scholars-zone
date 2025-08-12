@@ -25,9 +25,9 @@
                     class="text-gray-700 hover:text-purple-600 transition"
                 >About</a>
                 <a
-                    href="#services"
+                    href="{{ route('our-services') }}"
                     class="text-gray-700 hover:text-purple-600 transition"
-                >Services</a
+                >Our Services</a
                 >
                 <a
                     href="{{ route('destinations.index') }}"
@@ -77,11 +77,11 @@
                         <i class="fas fa-info-circle mr-3 text-purple-600"></i>About
                     </a>
                     <a
-                        href="#services"
+                        href="{{ route('our-services') }}"
                         class="text-lg text-gray-700 hover:text-purple-600 transition-colors duration-200 py-3 border-b border-gray-100"
                         onclick="closeMobileMenu()"
                     >
-                        <i class="fas fa-cogs mr-3 text-purple-600"></i>Services
+                        <i class="fas fa-cogs mr-3 text-purple-600"></i>Our Services
                     </a>
                     <a
                         href="{{ route('destinations.index') }}"
