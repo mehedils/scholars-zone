@@ -38,8 +38,7 @@ class ConsultationController extends Controller
                 'message' => 'Consultation status updated successfully.'
             ]);
         }
-
-        return redirect()->back()->with('success', 'Consultation status updated successfully.');
+        // return redirect()->back()->with('success', 'Consultation status updated successfully.');
     }
 
     public function destroy(Consultation $consultation)

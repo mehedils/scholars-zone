@@ -1,3 +1,9 @@
+@php
+use App\Helpers\SettingsHelper;
+use Illuminate\Support\Collection;
+@endphp
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -20,7 +26,7 @@
             <!-- Contact Info -->
             <div class="lg:col-span-1">
                 <h2 class="text-3xl font-bold text-gray-900 mb-8">Get In Touch</h2>
-                
+
                 <div class="space-y-6">
                     <!-- Address -->
                     <div class="flex items-start space-x-4">
@@ -30,9 +36,7 @@
                         <div>
                             <h3 class="text-lg font-semibold text-gray-900 mb-2">Our Office</h3>
                             <p class="text-gray-600">
-                                123 Education Street<br>
-                                Dhaka, Bangladesh<br>
-                                Postal Code: 1200
+                                <span>{{ SettingsHelper::contactAddress() }}</span>
                             </p>
                         </div>
                     </div>
@@ -45,11 +49,11 @@
                         <div>
                             <h3 class="text-lg font-semibold text-gray-900 mb-2">Phone</h3>
                             <p class="text-gray-600">
-                                <a href="tel:+8801234567890" class="hover:text-blue-600 transition-colors">
-                                    +880 1234 567 890
+                                <a href="tel:@contactPhone" class="hover:text-blue-600 transition-colors">
+                                    @contactPhone
                                 </a><br>
-                                <a href="tel:+8801234567891" class="hover:text-blue-600 transition-colors">
-                                    +880 1234 567 891
+                                <a href="tel:{{ SettingsHelper::footerPhone() }}" class="hover:text-blue-600 transition-colors">
+                                    {{ SettingsHelper::footerPhone() }}
                                 </a>
                             </p>
                         </div>
@@ -64,10 +68,10 @@
                             <h3 class="text-lg font-semibold text-gray-900 mb-2">Email</h3>
                             <p class="text-gray-600">
                                 <a href="mailto:info@scholarszone.com" class="hover:text-green-600 transition-colors">
-                                    info@scholarszone.com
+                                    @contactEmail
                                 </a><br>
                                 <a href="mailto:support@scholarszone.com" class="hover:text-green-600 transition-colors">
-                                    support@scholarszone.com
+                                    {{ SettingsHelper::footerEmail() }}
                                 </a>
                             </p>
                         </div>
@@ -81,9 +85,7 @@
                         <div>
                             <h3 class="text-lg font-semibold text-gray-900 mb-2">Business Hours</h3>
                             <p class="text-gray-600">
-                                Monday - Friday: 9:00 AM - 6:00 PM<br>
-                                Saturday: 10:00 AM - 4:00 PM<br>
-                                Sunday: Closed
+                                {{ SettingsHelper::businessHours() }}
                             </p>
                         </div>
                     </div>
@@ -113,7 +115,7 @@
             <div class="lg:col-span-2">
                 <div class="bg-white rounded-lg shadow-lg p-8">
                     <h2 class="text-3xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
-                    
+
                     <!-- Success/Error Messages -->
                     <div id="contact-form-messages" class="mb-6 hidden">
                         <div id="contact-success-message" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded hidden">
@@ -124,7 +126,7 @@
 
                     <form id="contact-form" class="space-y-6">
                         @csrf
-                        
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <!-- Name -->
                             <div>
@@ -227,7 +229,7 @@
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Find Us</h2>
             <p class="text-gray-600">Visit our office or get directions</p>
         </div>
-        
+
         <div class="bg-gray-200 rounded-lg h-96 flex items-center justify-center">
             <div class="text-center">
                 <i class="fas fa-map-marked-alt text-6xl text-gray-400 mb-4"></i>
@@ -245,7 +247,7 @@
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
             <p class="text-gray-600">Find answers to common questions</p>
         </div>
-        
+
         <div class="max-w-4xl mx-auto">
             <div class="space-y-6">
                 <div class="bg-white rounded-lg shadow-sm p-6">
@@ -256,7 +258,7 @@
                         You can schedule a consultation by filling out our consultation form on the homepage or by calling us directly. Our team will get back to you within 24 hours.
                     </p>
                 </div>
-                
+
                 <div class="bg-white rounded-lg shadow-sm p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-3">
                         What documents do I need for study abroad?
@@ -265,7 +267,7 @@
                         Required documents typically include academic transcripts, passport, language proficiency certificates, and financial statements. Specific requirements vary by country and program.
                     </p>
                 </div>
-                
+
                 <div class="bg-white rounded-lg shadow-sm p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-3">
                         How long does the visa process take?
@@ -274,7 +276,7 @@
                         Visa processing times vary by country. Generally, it takes 2-8 weeks. We recommend applying at least 3 months before your intended travel date.
                     </p>
                 </div>
-                
+
                 <div class="bg-white rounded-lg shadow-sm p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-3">
                         Do you provide accommodation assistance?
@@ -297,16 +299,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             // Get form data
             const formData = new FormData(this);
-            
+
             // Show loading state
             const submitButton = this.querySelector('button[type="submit"]');
             const originalText = submitButton.innerHTML;
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
             submitButton.disabled = true;
-            
+
             // Submit form via AJAX
             fetch('{{ route("contact.store") }}', {
                 method: 'POST',
@@ -346,12 +348,12 @@ function showContactMessage(type, message) {
     const messagesContainer = document.getElementById('contact-form-messages');
     const successMessage = document.getElementById('contact-success-message');
     const errorMessage = document.getElementById('contact-error-message');
-    
+
     // Hide all messages first
     messagesContainer.classList.add('hidden');
     successMessage.classList.add('hidden');
     errorMessage.classList.add('hidden');
-    
+
     // Show appropriate message
     if (type === 'success') {
         successMessage.textContent = message;
@@ -360,10 +362,10 @@ function showContactMessage(type, message) {
         errorMessage.textContent = message;
         errorMessage.classList.remove('hidden');
     }
-    
+
     // Show messages container
     messagesContainer.classList.remove('hidden');
-    
+
     // Auto-hide after 5 seconds
     setTimeout(() => {
         messagesContainer.classList.add('hidden');
