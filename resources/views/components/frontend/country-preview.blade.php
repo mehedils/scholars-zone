@@ -33,7 +33,7 @@
                         <div class="md:w-1/4">
                             <div class="space-y-2">
                                 <button
-                                    class="tab-btn w-full text-left p-4 rounded-lg bg-purple-600 text-white font-semibold active"
+                                    class="tab-btn w-full text-left p-4 rounded-lg bg-primary text-white font-semibold active"
                                     onclick="openTab(event, 'usa')"
                                 >
                                     <i class="fas fa-flag-usa mr-3"></i>United

@@ -16,161 +16,137 @@
 </style>
 @endpush
 
-<!-- Features Section -->
-<section class="py-16 bg-white" id="services">
+<section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-4xl font-bold text-gray-800 mb-4">
-                Why Choose Scholars Zone Global?
-            </h2>
-            <p class="text-gray-600 text-lg">
-                We provide comprehensive support for your study abroad
-                journey
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose Us</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                We provide comprehensive support to make your study abroad journey smooth and successful
             </p>
         </div>
-
-        @php
-            use App\Helpers\FeatureHelper;
-            $features = FeatureHelper::getFeaturesForFrontend();
-        @endphp
-
-        @if($features->count() > 0)
-            <div class="grid md:grid-cols-3 gap-8">
-                @foreach($features as $index => $feature)
-                    <div
-                        class="text-center p-6 card-hover bg-white rounded-lg shadow-lg"
-                        data-aos="fade-up"
-                        data-aos-delay="{{ ($index + 1) * 100 }}"
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @php
+                use App\Helpers\FeatureHelper;
+                $features = FeatureHelper::getFeaturesForFrontend();
+                
+                // Fallback to default features if no database features exist
+                if ($features->isEmpty()) {
+                    $features = collect([
+                        [
+                            'title' => 'University Selection',
+                            'description' => 'Expert guidance in choosing the right university based on your academic profile and career goals.',
+                            'icon' => 'fas fa-university'
+                        ],
+                        [
+                            'title' => 'Visa Application',
+                            'description' => 'Complete visa application support with 100% success rate and interview preparation.',
+                            'icon' => 'fas fa-passport'
+                        ],
+                        [
+                            'title' => 'Documentation',
+                            'description' => 'Professional assistance with all required documents and application materials.',
+                            'icon' => 'fas fa-file-alt'
+                        ],
+                        [
+                            'title' => 'Financial Planning',
+                            'description' => 'Comprehensive financial planning including scholarships, loans, and cost management.',
+                            'icon' => 'fas fa-dollar-sign'
+                        ],
+                        [
+                            'title' => 'Travel Arrangements',
+                            'description' => 'Complete travel support including flight booking and accommodation assistance.',
+                            'icon' => 'fas fa-plane'
+                        ],
+                        [
+                            'title' => '24/7 Support',
+                            'description' => 'Round-the-clock support throughout your entire study abroad journey.',
+                            'icon' => 'fas fa-headset'
+                        ],
+                    ]);
+                }
+            @endphp
+            @foreach($features as $feature)
+                <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div 
+                        class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4"
+                        style="background-color: color-mix(in srgb, var(--color-primary) 10%, white);"
                     >
-                        <div
-                            class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4"
-                        >
-                            <i class="{{ $feature['icon'] }} text-purple-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">
-                            {{ $feature['title'] }}
-                        </h3>
-                        <p class="text-gray-600">
-                            {{ $feature['description'] }}
-                        </p>
+                        <i class="{{ $feature['icon'] }} text-primary text-2xl"></i>
                     </div>
-                @endforeach
-            </div>
-        @else
-            <!-- Fallback to default features if no database features exist -->
-            <div class="grid md:grid-cols-3 gap-8">
-                <div
-                    class="text-center p-6 card-hover bg-white rounded-lg shadow-lg"
-                    data-aos="fade-up"
-                    data-aos-delay="100"
-                >
-                    <div
-                        class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4"
-                    >
-                        <i class="fas fa-university text-purple-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">
-                        University Selection
-                    </h3>
-                    <p class="text-gray-600">
-                        Expert guidance to choose the right university and
-                        program that matches your goals and budget.
-                    </p>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">{{ $feature['title'] }}</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">{{ $feature['description'] }}</p>
                 </div>
-
-                <div
-                    class="text-center p-6 card-hover bg-white rounded-lg shadow-lg"
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                >
-                    <div
-                        class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            @endforeach
+            
+            <!-- Additional features for demonstration -->
+            @if($features->count() < 6)
+                <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div 
+                        class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4"
+                        style="background-color: color-mix(in srgb, var(--color-primary) 10%, white);"
                     >
-                        <i class="fas fa-passport text-purple-600 text-2xl"></i>
+                        <i class="fas fa-university text-primary text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">
-                        Visa Processing
-                    </h3>
-                    <p class="text-gray-600">
-                        Complete visa application support with 100% success
-                        rate and interview preparation.
-                    </p>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">University Selection</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">Expert guidance in choosing the right university based on your academic profile and career goals.</p>
                 </div>
-
-                <div
-                    class="text-center p-6 card-hover bg-white rounded-lg shadow-lg"
-                    data-aos="fade-up"
-                    data-aos-delay="300"
-                >
-                    <div
-                        class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                
+                <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div 
+                        class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4"
+                        style="background-color: color-mix(in srgb, var(--color-primary) 10%, white);"
                     >
-                        <i class="fas fa-file-alt text-purple-600 text-2xl"></i>
+                        <i class="fas fa-passport text-primary text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">
-                        Application Support
-                    </h3>
-                    <p class="text-gray-600">
-                        Professional assistance with application forms,
-                        essays, and documentation requirements.
-                    </p>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">Visa Application</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">Complete visa application support with 100% success rate and interview preparation.</p>
                 </div>
-
-                <div
-                    class="text-center p-6 card-hover bg-white rounded-lg shadow-lg"
-                    data-aos="fade-up"
-                    data-aos-delay="400"
-                >
-                    <div
-                        class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                
+                <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div 
+                        class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4"
+                        style="background-color: color-mix(in srgb, var(--color-primary) 10%, white);"
                     >
-                        <i class="fas fa-dollar-sign text-purple-600 text-2xl"></i>
+                        <i class="fas fa-file-alt text-primary text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">
-                        Scholarship Guidance
-                    </h3>
-                    <p class="text-gray-600">
-                        Help you find and apply for scholarships to reduce
-                        your education costs significantly.
-                    </p>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">Documentation</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">Professional assistance with all required documents and application materials.</p>
                 </div>
-
-                <div
-                    class="text-center p-6 card-hover bg-white rounded-lg shadow-lg"
-                    data-aos="fade-up"
-                    data-aos-delay="500"
-                >
-                    <div
-                        class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                
+                <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div 
+                        class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4"
+                        style="background-color: color-mix(in srgb, var(--color-primary) 10%, white);"
                     >
-                        <i class="fas fa-plane text-purple-600 text-2xl"></i>
+                        <i class="fas fa-dollar-sign text-primary text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">
-                        Pre-departure Support
-                    </h3>
-                    <p class="text-gray-600">
-                        Comprehensive briefing about accommodation, travel,
-                        and settling in your new country.
-                    </p>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">Financial Planning</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">Comprehensive financial planning including scholarships, loans, and cost management.</p>
                 </div>
-
-                <div
-                    class="text-center p-6 card-hover bg-white rounded-lg shadow-lg"
-                    data-aos="fade-up"
-                    data-aos-delay="600"
-                >
-                    <div
-                        class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                
+                <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div 
+                        class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4"
+                        style="background-color: color-mix(in srgb, var(--color-primary) 10%, white);"
                     >
-                        <i class="fas fa-headset text-purple-600 text-2xl"></i>
+                        <i class="fas fa-plane text-primary text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">24/7 Support</h3>
-                    <p class="text-gray-600">
-                        Round-the-clock assistance even after you reach your
-                        destination country.
-                    </p>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">Travel Arrangements</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">Complete travel support including flight booking and accommodation assistance.</p>
                 </div>
-            </div>
-        @endif
+                
+                <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div 
+                        class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4"
+                        style="background-color: color-mix(in srgb, var(--color-primary) 10%, white);"
+                    >
+                        <i class="fas fa-headset text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">24/7 Support</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">Round-the-clock support throughout your entire study abroad journey.</p>
+                </div>
+            @endif
+        </div>
     </div>
 </section>

@@ -41,7 +41,7 @@
             @foreach($sliders as $index => $slider)
                 <div class="swiper-slide">
                     <div class="h-full relative">
-                        <div class="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-blue-900/60"></div>
+                        <div class="absolute inset-0 bg-black/60"></div>
                         <div
                             class="h-full bg-cover bg-center bg-no-repeat flex items-center"
                             style="background-image: url('{{ $slider['image_url'] ?? asset('images/hero/hero1.jpg') }}');"
@@ -49,7 +49,7 @@
                             <div class="container mx-auto px-4 text-white relative z-10">
                                 <div class="max-w-3xl" data-aos="fade-up">
                                     @if(isset($slider['subtitle']) && $slider['subtitle'])
-                                        <p class="text-lg sm:text-xl md:text-2xl font-medium mb-2 md:mb-3 text-blue-200">
+                                        <p class="text-lg sm:text-xl md:text-2xl font-medium mb-2 md:mb-3 text-gray-200">
                                             {{ $slider['subtitle'] }}
                                         </p>
                                     @endif
@@ -62,15 +62,15 @@
                                     <div class="flex flex-wrap gap-3 md:gap-4">
                                         @if(isset($slider['button_text']) && isset($slider['button_url']))
                                             <a href="{{ $slider['button_url'] }}" 
-                                               class="bg-white text-purple-600 px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                                               class="bg-white text-primary px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
                                                 {{ $slider['button_text'] }}
                                             </a>
                                         @else
-                                            <button class="bg-white text-purple-600 px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                                            <button class="bg-white text-primary px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
                                                 Get Started
                                             </button>
                                         @endif
-                                        <button class="border-2 border-white text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition">
+                                        <button class="border-2 border-white text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition">
                                             Learn More
                                         </button>
                                     </div>

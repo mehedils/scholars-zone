@@ -9,7 +9,7 @@
                 >
                     <img src="@siteLogo" alt="@siteName" class="w-full h-full object-cover">
                 </div>
-                <h1 class="text-2xl font-bold text-purple-800">
+                <h1 class="text-2xl font-bold text-primary">
                     @siteName
                 </h1>
             </div>
@@ -17,31 +17,31 @@
             <nav class="hidden md:flex space-x-8">
                 <a
                     href="#home"
-                    class="text-gray-700 hover:text-purple-600 transition"
+                    class="text-gray-700 hover:text-primary transition"
                 >Home</a
                 >
                 <a
                     href="{{ route('about') }}"
-                    class="text-gray-700 hover:text-purple-600 transition"
+                    class="text-gray-700 hover:text-primary transition"
                 >About</a>
                 <a
                     href="{{ route('our-services') }}"
-                    class="text-gray-700 hover:text-purple-600 transition"
+                    class="text-gray-700 hover:text-primary transition"
                 >Our Services</a
                 >
                 <a
                     href="{{ route('destinations.index') }}"
-                    class="text-gray-700 hover:text-purple-600 transition"
+                    class="text-gray-700 hover:text-primary transition"
                 >Destinations</a
                 >
                 <a
                     href="#blog"
-                    class="text-gray-700 hover:text-purple-600 transition"
+                    class="text-gray-700 hover:text-primary transition"
                 >Blog</a
                 >
                 <a
                     href="{{ route('contact') }}"
-                    class="text-gray-700 hover:text-purple-600 transition"
+                    class="text-gray-700 hover:text-primary transition"
                 >Contact</a
                 >
             </nav>
@@ -64,54 +64,54 @@
                 <nav class="flex flex-col space-y-6">
                     <a
                         href="#home"
-                        class="text-lg text-gray-700 hover:text-purple-600 transition-colors duration-200 py-3 border-b border-gray-100"
+                        class="text-lg text-gray-700 hover:text-primary transition-colors duration-200 py-3 border-b border-gray-100"
                         onclick="closeMobileMenu()"
                     >
-                        <i class="fas fa-home mr-3 text-purple-600"></i>Home
+                        <i class="fas fa-home mr-3 text-primary"></i>Home
                     </a>
                     <a
                         href="{{ route('about') }}"
-                        class="text-lg text-gray-700 hover:text-purple-600 transition-colors duration-200 py-3 border-b border-gray-100"
+                        class="text-lg text-gray-700 hover:text-primary transition-colors duration-200 py-3 border-b border-gray-100"
                         onclick="closeMobileMenu()"
                     >
-                        <i class="fas fa-info-circle mr-3 text-purple-600"></i>About
+                        <i class="fas fa-info-circle mr-3 text-primary"></i>About
                     </a>
                     <a
                         href="{{ route('our-services') }}"
-                        class="text-lg text-gray-700 hover:text-purple-600 transition-colors duration-200 py-3 border-b border-gray-100"
+                        class="text-lg text-gray-700 hover:text-primary transition-colors duration-200 py-3 border-b border-gray-100"
                         onclick="closeMobileMenu()"
                     >
-                        <i class="fas fa-cogs mr-3 text-purple-600"></i>Our Services
+                        <i class="fas fa-cogs mr-3 text-primary"></i>Our Services
                     </a>
                     <a
                         href="{{ route('destinations.index') }}"
-                        class="text-lg text-gray-700 hover:text-purple-600 transition-colors duration-200 py-3 border-b border-gray-100"
+                        class="text-lg text-gray-700 hover:text-primary transition-colors duration-200 py-3 border-b border-gray-100"
                         onclick="closeMobileMenu()"
                     >
-                        <i class="fas fa-map-marker-alt mr-3 text-purple-600"></i>Destinations
+                        <i class="fas fa-map-marker-alt mr-3 text-primary"></i>Destinations
                     </a>
                     <a
                         href="#blog"
-                        class="text-lg text-gray-700 hover:text-purple-600 transition-colors duration-200 py-3 border-b border-gray-100"
+                        class="text-lg text-gray-700 hover:text-primary transition-colors duration-200 py-3 border-b border-gray-100"
                         onclick="closeMobileMenu()"
                     >
-                        <i class="fas fa-blog mr-3 text-purple-600"></i>Blog
+                        <i class="fas fa-blog mr-3 text-primary"></i>Blog
                     </a>
                     <a
                         href="{{ route('contact') }}"
-                        class="text-lg text-gray-700 hover:text-purple-600 transition-colors duration-200 py-3 border-b border-gray-100"
+                        class="text-lg text-gray-700 hover:text-primary transition-colors duration-200 py-3 border-b border-gray-100"
                         onclick="closeMobileMenu()"
                     >
-                        <i class="fas fa-envelope mr-3 text-purple-600"></i>Contact
+                        <i class="fas fa-envelope mr-3 text-primary"></i>Contact
                     </a>
                 </nav>
 
                 <!-- Additional mobile menu content -->
                 <div class="mt-8 pt-6 border-t border-gray-200">
                     <div class="text-center">
-                        <h3 class="text-lg font-semibold text-purple-800 mb-4">Get Started Today</h3>
+                        <h3 class="text-lg font-semibold text-primary mb-4">Get Started Today</h3>
                         <a href="#contact"
-                           class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors duration-200"
+                           class="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors duration-200"
                            onclick="closeMobileMenu()">
                             Book Consultation
                         </a>

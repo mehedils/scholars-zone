@@ -17,132 +17,95 @@
                             Bangladeshi students achieve their dreams of
                             international education.
                         </p>
-                        <x-social-media color="text-gray-400" hoverColor="hover:text-purple-400" />
+                        <x-social-media color="text-gray-400" hoverColor="hover:text-primary" />
                     </div>
 
                     <div>
-                        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                        <ul class="space-y-2 text-gray-400">
+                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
                             <li>
-                                <a
-                                    href="#"
-                                    class="hover:text-purple-400 transition"
-                                    >About Us</a
-                                >
+                                <a href="{{ route('home') }}" 
+                                   class="hover:text-primary transition">Home</a>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    class="hover:text-purple-400 transition"
-                                    >Services</a
-                                >
+                                <a href="{{ route('about') }}" 
+                                   class="hover:text-primary transition">About Us</a>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    class="hover:text-purple-400 transition"
-                                    >Destinations</a
-                                >
+                                <a href="{{ route('our-services') }}" 
+                                   class="hover:text-primary transition">Our Services</a>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    class="hover:text-purple-400 transition"
-                                    >Success Stories</a
-                                >
+                                <a href="{{ route('destinations.index') }}" 
+                                   class="hover:text-primary transition">Destinations</a>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    class="hover:text-purple-400 transition"
-                                    >Blog</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="{{ route('contact') }}"
-                                    class="hover:text-purple-400 transition"
-                                    >Contact Us</a
-                                >
+                                <a href="#blog" 
+                                   class="hover:text-primary transition">Blog</a>
                             </li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 class="text-lg font-semibold mb-4">
-                            Study Destinations
-                        </h4>
-                        <ul class="space-y-2 text-gray-400">
+                        <h3 class="text-lg font-semibold mb-4">Services</h3>
+                        <ul class="space-y-2">
                             <li>
-                                <a
-                                    href="#"
-                                    class="hover:text-purple-400 transition"
-                                    >United States</a
-                                >
+                                <a href="#" 
+                                   class="hover:text-primary transition">University Selection</a>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    class="hover:text-purple-400 transition"
-                                    >United Kingdom</a
-                                >
+                                <a href="#" 
+                                   class="hover:text-primary transition">Visa Application</a>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    class="hover:text-purple-400 transition"
-                                    >Canada</a
-                                >
+                                <a href="#" 
+                                   class="hover:text-primary transition">Documentation</a>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    class="hover:text-purple-400 transition"
-                                    >Australia</a
-                                >
+                                <a href="#" 
+                                   class="hover:text-primary transition">Financial Planning</a>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    class="hover:text-purple-400 transition"
-                                    >Germany</a
-                                >
+                                <a href="#" 
+                                   class="hover:text-primary transition">Travel Support</a>
                             </li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
-                        <div class="space-y-3 text-gray-400">
-                            @php
-                                use App\Helpers\SettingsHelper;
-                            @endphp
+                        <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                        <div class="space-y-3">
                             <div class="flex items-center">
-                                <i class="fas fa-map-marker-alt mr-3"></i>
-                                <span>{{ SettingsHelper::contactAddress() }}</span>
+                                <i class="fas fa-map-marker-alt mr-3 text-primary"></i>
+                                <span class="text-gray-400">Dhaka, Bangladesh</span>
                             </div>
                             <div class="flex items-center">
-                                <i class="fas fa-phone mr-3"></i>
-                                <span>{{ SettingsHelper::footerPhone() }}</span>
+                                <i class="fas fa-phone mr-3 text-primary"></i>
+                                <span class="text-gray-400">@contactPhone</span>
                             </div>
                             <div class="flex items-center">
-                                <i class="fas fa-envelope mr-3"></i>
-                                <span>{{ SettingsHelper::footerEmail() }}</span>
+                                <i class="fas fa-envelope mr-3 text-primary"></i>
+                                <span class="text-gray-400">@contactEmail</span>
                             </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-clock mr-3"></i>
-                                <span>{{ SettingsHelper::businessHours() }}</span>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <h4 class="text-md font-semibold mb-3">Newsletter</h4>
+                            <div class="flex">
+                                <input type="email" 
+                                       placeholder="Your email" 
+                                       class="flex-1 px-3 py-2 bg-gray-700 text-white rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                <button class="px-4 py-2 bg-primary text-white rounded-r-lg hover:bg-primary-dark transition-colors">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div
-                    class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400"
-                >
-                    <p>
-                        &copy; 2025 Scholars Zone Global. All rights reserved. |
-                        Privacy Policy | Terms of Service
+                
+                <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                    <p class="text-gray-400">
+                        © {{ date('Y') }} @siteName. All rights reserved.
                     </p>
                 </div>
             </div>

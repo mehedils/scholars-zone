@@ -20,34 +20,29 @@
                         <!-- Destination Image -->
                         <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
                             @if($destination->featured_image)
-                                <img src="{{ $destination->featured_image_url }}" 
-                                     alt="{{ $destination->name }}" 
-                                     class="w-full h-full object-cover">
+                                <img src="{{ $destination->featured_image_url }}" alt="{{ $destination->name }}" class="w-full h-full object-cover">
                             @else
                                 <div class="flex items-center justify-center h-full">
-                                    <i class="fas fa-globe text-white text-6xl"></i>
+                                    <i class="fas fa-flag text-white text-6xl"></i>
                                 </div>
                             @endif
-                            @if($destination->flag_image)
+                            
+                            @if($destination->is_featured)
                                 <div class="absolute top-4 right-4">
-                                    <img src="{{ $destination->flag_image_url }}" 
-                                         alt="{{ $destination->name }} flag" 
-                                         class="w-8 h-6 rounded shadow-md">
+                                    <span class="bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-sm font-semibold">
+                                        <i class="fas fa-star mr-1"></i>Featured
+                                    </span>
                                 </div>
                             @endif
                         </div>
-
-                        <!-- Destination Content -->
+                        
                         <div class="p-6">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-3">
-                                {{ $destination->name }}
-                            </h3>
-                            <p class="text-gray-600 mb-4 line-clamp-3">
-                                {{ $destination->short_description }}
-                            </p>
-
-                            <!-- Quick Stats -->
-                            <div class="grid grid-cols-2 gap-4 mb-4 text-sm">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3">{{ $destination->name }}</h3>
+                            
+                            <p class="text-gray-600 mb-6">{{ Str::limit($destination->short_description, 120) }}</p>
+                            
+                            <!-- Key Statistics - Centered boxes -->
+                            <div class="grid grid-cols-2 gap-4 mb-6">
                                 <div class="text-center p-2 bg-gray-50 rounded">
                                     <div class="font-semibold text-gray-800">{{ $destination->formatted_tuition_fee }}</div>
                                     <div class="text-gray-600">Avg. Tuition</div>
@@ -57,10 +52,10 @@
                                     <div class="text-gray-600">Living Cost</div>
                                 </div>
                             </div>
-
-                            <!-- Highlights (first 2) -->
+                            
+                            <!-- Highlights/Benefits List -->
                             @if($destination->highlights && count($destination->highlights) > 0)
-                                <div class="space-y-2 mb-4">
+                                <div class="space-y-2 mb-6">
                                     @foreach(array_slice($destination->highlights, 0, 2) as $highlight)
                                         <div class="flex items-center text-sm">
                                             <i class="fas fa-check text-green-500 mr-2"></i>
@@ -68,12 +63,27 @@
                                         </div>
                                     @endforeach
                                 </div>
+                            @else
+                                <!-- Fallback benefits for destinations without highlights -->
+                                <div class="space-y-2 mb-6">
+                                    <div class="flex items-center text-sm">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span class="text-gray-700">Post-graduation work permit up to 3 years</span>
+                                    </div>
+                                    <div class="flex items-center text-sm">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span class="text-gray-700">Pathway to permanent residence</span>
+                                    </div>
+                                </div>
                             @endif
-
-                            <a href="{{ $destination->url }}" 
-                               class="w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition text-center inline-block">
-                                Learn More About {{ $destination->name }}
-                            </a>
+                            
+                            <!-- Call to Action Button -->
+                            @if($destination->url)
+                                <a href="{{ $destination->url }}" 
+                                   class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition text-center block">
+                                    Learn More About {{ $destination->name }}
+                                </a>
+                            @endif
                         </div>
                     </div>
                 @endforeach
@@ -123,7 +133,7 @@
                         </div>
 
                         <a href="{{ route('destinations.index') }}"
-                           class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition inline-block">
+                           class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition inline-block">
                             Explore Destinations
                         </a>
                     </div>
@@ -132,3 +142,4 @@
         @endif
     </div>
 </section>
+
