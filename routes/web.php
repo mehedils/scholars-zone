@@ -16,6 +16,11 @@ Route::get('/destinations/{destination}', [DestinationController::class, 'show']
 // Our Services Route
 Route::get('/our-services', [App\Http\Controllers\StudentEssentialController::class, 'index'])->name('our-services');
 
+// About Page Route
+Route::get('/about', function() {
+    return view('frontend.about');
+})->name('about');
+
 // Consultation Form Submission
 Route::post('/consultation', [App\Http\Controllers\ConsultationController::class, 'store'])->name('consultation.store');
 
@@ -36,18 +41,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     
     // Users Management
-    Route::get('/users', function() {
-        return view('admin.users.index');
-    })->name('users');
-    Route::get('/users/create', function() {
-        return view('admin.users.create');
-    })->name('users.create');
-    Route::get('/users/{user}', function($user) {
-        return view('admin.users.show', compact('user'));
-    })->name('users.show');
-    Route::get('/users/{user}/edit', function($user) {
-        return view('admin.users.edit', compact('user'));
-    })->name('users.edit');
+    Route::resource('users', App\Http\Controllers\Admin\UserController::class)->names('users');
+    Route::post('/users/{user}/toggle-status', [App\Http\Controllers\Admin\UserController::class, 'toggleStatus'])->name('users.toggle-status');
     
     // Destinations Management
     Route::resource('destinations', AdminDestinationController::class)->names('destinations');

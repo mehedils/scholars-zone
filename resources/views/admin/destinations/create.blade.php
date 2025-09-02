@@ -261,6 +261,17 @@
         verify_html: true,
         cleanup: true,
         cleanup_on_startup: true,
+        setup: function(editor) {
+            // Sync TinyMCE content with the original textarea on form submission
+            editor.on('change', function() {
+                editor.save();
+            });
+            
+            // Ensure the textarea is updated before form submission
+            editor.on('submit', function() {
+                editor.save();
+            });
+        },
         images_upload_handler: function (blobInfo, success, failure) {
             var xhr, formData;
             xhr = new XMLHttpRequest();
@@ -303,5 +314,12 @@
     function removeField(button) {
         button.parentElement.remove();
     }
+
+    // Ensure TinyMCE content is saved before form submission
+    document.querySelector('form').addEventListener('submit', function(e) {
+        if (tinymce.get('content')) {
+            tinymce.get('content').save();
+        }
+    });
 </script>
 @endsection

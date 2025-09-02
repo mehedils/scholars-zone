@@ -21,7 +21,7 @@
                 >Home</a
                 >
                 <a
-                    href="#about"
+                    href="{{ route('about') }}"
                     class="text-gray-700 hover:text-purple-600 transition"
                 >About</a>
                 <a
@@ -70,7 +70,7 @@
                         <i class="fas fa-home mr-3 text-purple-600"></i>Home
                     </a>
                     <a
-                        href="#about"
+                        href="{{ route('about') }}"
                         class="text-lg text-gray-700 hover:text-purple-600 transition-colors duration-200 py-3 border-b border-gray-100"
                         onclick="closeMobileMenu()"
                     >

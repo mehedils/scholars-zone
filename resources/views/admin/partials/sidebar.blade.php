@@ -32,7 +32,7 @@
             </li>
             
             <li>
-                <a href="{{ route('admin.users') }}" 
+                                <a href="{{ route('admin.users.index') }}"
                    class="flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.users*') ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
                     <i class="fas fa-users w-5"></i>
                     <span>Users</span>

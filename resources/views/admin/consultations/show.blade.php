@@ -96,15 +96,17 @@
             <!-- Admin Notes -->
             <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                 <h2 class="text-lg font-semibold text-gray-900 mb-4">Admin Notes</h2>
-                <form id="admin-notes-form">
+                <form method="POST" action="{{ route('admin.consultations.update-status', $consultation) }}">
+                    @csrf
+                    <input type="hidden" name="status" value="{{ $consultation->status }}">
                     <textarea 
-                        id="admin-notes" 
+                        name="admin_notes"
                         rows="4" 
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="Add notes about this consultation..."
                     >{{ $consultation->admin_notes }}</textarea>
                     <div class="mt-4 flex space-x-3">
-                        <button type="button" onclick="saveNotes()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
                             <i class="fas fa-save mr-2"></i>Save Notes
                         </button>
                     </div>
@@ -118,30 +120,46 @@
             <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                 <h2 class="text-lg font-semibold text-gray-900 mb-4">Status Management</h2>
                 <div class="space-y-3">
-                    <button onclick="updateStatus('pending')" class="w-full text-left px-3 py-2 rounded-lg border {{ $consultation->status === 'pending' ? 'bg-yellow-100 border-yellow-300' : 'bg-white border-gray-300 hover:bg-gray-50' }}">
-                        <div class="flex items-center">
-                            <div class="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
-                            <span class="text-sm font-medium">Pending</span>
-                        </div>
-                    </button>
-                    <button onclick="updateStatus('contacted')" class="w-full text-left px-3 py-2 rounded-lg border {{ $consultation->status === 'contacted' ? 'bg-green-100 border-green-300' : 'bg-white border-gray-300 hover:bg-gray-50' }}">
-                        <div class="flex items-center">
-                            <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                            <span class="text-sm font-medium">Contacted</span>
-                        </div>
-                    </button>
-                    <button onclick="updateStatus('completed')" class="w-full text-left px-3 py-2 rounded-lg border {{ $consultation->status === 'completed' ? 'bg-purple-100 border-purple-300' : 'bg-white border-gray-300 hover:bg-gray-50' }}">
-                        <div class="flex items-center">
-                            <div class="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
-                            <span class="text-sm font-medium">Completed</span>
-                        </div>
-                    </button>
-                    <button onclick="updateStatus('cancelled')" class="w-full text-left px-3 py-2 rounded-lg border {{ $consultation->status === 'cancelled' ? 'bg-red-100 border-red-300' : 'bg-white border-gray-300 hover:bg-gray-50' }}">
-                        <div class="flex items-center">
-                            <div class="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
-                            <span class="text-sm font-medium">Cancelled</span>
-                        </div>
-                    </button>
+                    <form method="POST" action="{{ route('admin.consultations.update-status', $consultation) }}" class="inline">
+                        @csrf
+                        <input type="hidden" name="status" value="pending">
+                        <button type="submit" class="w-full text-left px-3 py-2 rounded-lg border {{ $consultation->status === 'pending' ? 'bg-yellow-100 border-yellow-300' : 'bg-white border-gray-300 hover:bg-gray-50' }}" onclick="return confirm('Are you sure you want to set status to Pending?')">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
+                                <span class="text-sm font-medium">Pending</span>
+                            </div>
+                        </button>
+                    </form>
+                    <form method="POST" action="{{ route('admin.consultations.update-status', $consultation) }}" class="inline">
+                        @csrf
+                        <input type="hidden" name="status" value="contacted">
+                        <button type="submit" class="w-full text-left px-3 py-2 rounded-lg border {{ $consultation->status === 'contacted' ? 'bg-green-100 border-green-300' : 'bg-white border-gray-300 hover:bg-gray-50' }}" onclick="return confirm('Are you sure you want to set status to Contacted?')">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                                <span class="text-sm font-medium">Contacted</span>
+                            </div>
+                        </button>
+                    </form>
+                    <form method="POST" action="{{ route('admin.consultations.update-status', $consultation) }}" class="inline">
+                        @csrf
+                        <input type="hidden" name="status" value="completed">
+                        <button type="submit" class="w-full text-left px-3 py-2 rounded-lg border {{ $consultation->status === 'completed' ? 'bg-purple-100 border-purple-300' : 'bg-white border-gray-300 hover:bg-gray-50' }}" onclick="return confirm('Are you sure you want to set status to Completed?')">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
+                                <span class="text-sm font-medium">Completed</span>
+                            </div>
+                        </button>
+                    </form>
+                    <form method="POST" action="{{ route('admin.consultations.update-status', $consultation) }}" class="inline">
+                        @csrf
+                        <input type="hidden" name="status" value="cancelled">
+                        <button type="submit" class="w-full text-left px-3 py-2 rounded-lg border {{ $consultation->status === 'cancelled' ? 'bg-red-100 border-red-300' : 'bg-white border-gray-300 hover:bg-gray-50' }}" onclick="return confirm('Are you sure you want to set status to Cancelled?')">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
+                                <span class="text-sm font-medium">Cancelled</span>
+                            </div>
+                        </button>
+                    </form>
                 </div>
             </div>
 
@@ -187,9 +205,13 @@
                     <button onclick="callStudent()" class="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200">
                         <i class="fas fa-phone mr-2"></i>Call Student
                     </button>
-                    <button onclick="deleteConsultation()" class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200">
-                        <i class="fas fa-trash mr-2"></i>Delete Consultation
-                    </button>
+                    <form method="POST" action="{{ route('admin.consultations.destroy', $consultation) }}" class="inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200" onclick="return confirm('Are you sure you want to delete this consultation? This action cannot be undone.')">
+                            <i class="fas fa-trash mr-2"></i>Delete Consultation
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -197,61 +219,6 @@
 </div>
 
 <script>
-function updateStatus(status) {
-    if (confirm('Are you sure you want to update the status to ' + status + '?')) {
-        fetch(`{{ route('admin.consultations.update-status', $consultation) }}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify({ status: status })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                location.reload();
-            } else {
-                alert('Error updating status');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error updating status');
-        });
-    }
-}
-
-function saveNotes() {
-    const notes = document.getElementById('admin-notes').value;
-    
-    fetch(`{{ route('admin.consultations.update-status', $consultation) }}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-            'Accept': 'application/json',
-        },
-        body: JSON.stringify({ 
-            status: '{{ $consultation->status }}',
-            admin_notes: notes 
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Notes saved successfully');
-        } else {
-            alert('Error saving notes');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error saving notes');
-    });
-}
-
 function sendEmail() {
     const email = '{{ $consultation->email }}';
     window.open(`mailto:${email}?subject=Consultation Request - Scholars Zone`);
@@ -260,30 +227,6 @@ function sendEmail() {
 function callStudent() {
     const phone = '{{ $consultation->phone }}';
     window.open(`tel:${phone}`);
-}
-
-function deleteConsultation() {
-    if (confirm('Are you sure you want to delete this consultation? This action cannot be undone.')) {
-        fetch(`{{ route('admin.consultations.destroy', $consultation) }}`, {
-            method: 'DELETE',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                'Accept': 'application/json',
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.href = '{{ route("admin.consultations.index") }}';
-            } else {
-                alert('Error deleting consultation');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error deleting consultation');
-        });
-    }
 }
 </script>
 @endsection
