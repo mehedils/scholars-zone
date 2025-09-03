@@ -16,7 +16,7 @@ class HomeController extends Controller
         $featuredDestinations = Destination::featured()
             ->active()
             ->orderBy('order', 'asc')
-            ->take(3)
+            ->take(6)
             ->get();
 
         return view('frontend.home', compact('featuredDestinations'));

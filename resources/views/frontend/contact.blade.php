@@ -290,7 +290,6 @@ use Illuminate\Support\Collection;
     </div>
 </section>
 @endsection
-
 @push('scripts')
 <script>
 // Contact form submission
@@ -373,3 +372,4 @@ function showContactMessage(type, message) {
 }
 </script>
 @endpush
+

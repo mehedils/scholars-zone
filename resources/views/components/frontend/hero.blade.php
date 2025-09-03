@@ -41,15 +41,14 @@
             @foreach($sliders as $index => $slider)
                 <div class="swiper-slide">
                     <div class="h-full relative">
-                        <div class="absolute inset-0 bg-black/60"></div>
                         <div
                             class="h-full bg-cover bg-center bg-no-repeat flex items-center"
                             style="background-image: url('{{ $slider['image_url'] ?? asset('images/hero/hero1.jpg') }}');"
                         >
                             <div class="container mx-auto px-4 text-white relative z-10">
-                                <div class="max-w-3xl" data-aos="fade-up">
+                                <div class="max-w-3xl bg-black/40 backdrop-blur-sm rounded-lg p-6 md:p-8" data-aos="fade-up">
                                     @if(isset($slider['subtitle']) && $slider['subtitle'])
-                                        <p class="text-lg sm:text-xl md:text-2xl font-medium mb-2 md:mb-3 text-gray-200">
+                                        <p class="text-lg sm:text-xl md:text-2xl font-medium mb-2 md:mb-3 text-blue-200">
                                             {{ $slider['subtitle'] }}
                                         </p>
                                     @endif

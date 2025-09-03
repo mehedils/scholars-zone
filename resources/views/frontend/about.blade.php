@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="relative bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
+<section class="relative bg-gradient-to-r from-blue-600 to-primary text-white py-20">
     <div class="absolute inset-0 bg-black opacity-20"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
@@ -33,7 +33,7 @@
                 </p>
             </div>
             <div class="relative">
-                <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-8 text-white">
+                <div class="bg-gradient-to-br from-blue-500 to-primary rounded-2xl p-8 text-white">
                     <div class="text-center">
                         <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
                             <i class="fas fa-graduation-cap text-3xl"></i>
@@ -86,7 +86,7 @@
             </div>
             
             <div class="text-center">
-                <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-users text-white text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-2">Growing Together</h3>
@@ -101,7 +101,7 @@
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-2">Global Reach</h3>
                 <p class="text-gray-600">
-                    Today, we serve students from around the world, helping them achieve their dreams of international education.
+                    Established partnerships with universities and institutions across the globe to expand opportunities for our students.
                 </p>
             </div>
         </div>
@@ -114,48 +114,48 @@
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                The principles that guide everything we do and shape our commitment to student success.
+                The principles that guide our work and define our commitment to student success.
             </p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="text-center p-6 rounded-lg bg-blue-50">
-                <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-heart text-white"></i>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="text-center p-6 rounded-lg bg-primary-light">
+                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-heart text-white text-xl"></i>
                 </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Passion</h3>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Compassion</h3>
                 <p class="text-gray-600 text-sm">
-                    We are passionate about education and committed to helping students achieve their dreams.
+                    We care deeply about each student's journey and success.
                 </p>
             </div>
             
-            <div class="text-center p-6 rounded-lg bg-purple-50">
-                <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-shield-alt text-white"></i>
+            <div class="text-center p-6 rounded-lg bg-blue-50">
+                <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-shield-alt text-white text-xl"></i>
                 </div>
                 <h3 class="text-lg font-bold text-gray-900 mb-2">Integrity</h3>
                 <p class="text-gray-600 text-sm">
-                    We maintain the highest standards of honesty and transparency in all our interactions.
+                    We maintain the highest ethical standards in all our interactions.
                 </p>
             </div>
             
             <div class="text-center p-6 rounded-lg bg-green-50">
                 <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-star text-white"></i>
+                    <i class="fas fa-star text-white text-xl"></i>
                 </div>
                 <h3 class="text-lg font-bold text-gray-900 mb-2">Excellence</h3>
                 <p class="text-gray-600 text-sm">
-                    We strive for excellence in everything we do, from counseling to customer service.
+                    We strive for the highest quality in everything we do.
                 </p>
             </div>
             
             <div class="text-center p-6 rounded-lg bg-yellow-50">
                 <div class="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-hands-helping text-white"></i>
+                    <i class="fas fa-handshake text-white text-xl"></i>
                 </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Support</h3>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Partnership</h3>
                 <p class="text-gray-600 text-sm">
-                    We provide unwavering support to our students throughout their educational journey.
+                    We build lasting relationships with students and institutions.
                 </p>
             </div>
         </div>
@@ -168,22 +168,37 @@
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Expert Team</h2>
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                Meet the dedicated professionals who are committed to helping you achieve your educational goals.
+                Meet the dedicated professionals who make your study abroad dreams a reality.
             </p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-8 text-white text-center">
+                <div class="bg-gradient-to-r from-blue-500 to-primary p-8 text-white text-center">
                     <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-user-tie text-2xl"></i>
+                        <i class="fas fa-user-tie text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold">Education Counselors</h3>
+                    <h3 class="text-xl font-bold mb-2">Education Counselors</h3>
                     <p class="text-blue-100">Expert guidance for your academic journey</p>
                 </div>
                 <div class="p-6">
                     <p class="text-gray-600">
-                        Our experienced counselors provide personalized advice to help you choose the right program and university.
+                        Our experienced counselors provide personalized advice on university selection, course choices, and application strategies.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-gradient-to-r from-primary to-pink-600 p-8 text-white text-center">
+                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Support Team</h3>
+                    <p class="text-primary-light">24/7 assistance and guidance</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600">
+                        Our dedicated support team is always available to help with any questions or concerns throughout your journey.
                     </p>
                 </div>
             </div>
@@ -191,29 +206,14 @@
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div class="bg-gradient-to-r from-green-500 to-blue-600 p-8 text-white text-center">
                     <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-file-alt text-2xl"></i>
+                        <i class="fas fa-globe text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold">Application Specialists</h3>
-                    <p class="text-green-100">Comprehensive application support</p>
+                    <h3 class="text-xl font-bold mb-2">Global Partners</h3>
+                    <p class="text-green-100">Worldwide network of institutions</p>
                 </div>
                 <div class="p-6">
                     <p class="text-gray-600">
-                        Our specialists ensure your applications are complete, accurate, and submitted on time.
-                    </p>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="bg-gradient-to-r from-purple-500 to-pink-600 p-8 text-white text-center">
-                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-headset text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold">Student Support</h3>
-                    <p class="text-purple-100">24/7 assistance and guidance</p>
-                </div>
-                <div class="p-6">
-                    <p class="text-gray-600">
-                        Our support team is always available to answer your questions and provide assistance.
+                        We maintain strong partnerships with universities and institutions across the globe to expand your opportunities.
                     </p>
                 </div>
             </div>
@@ -264,7 +264,7 @@
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="{{ route('consultation.store') }}" 
-               class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold">
+               class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary-dark transition-colors duration-200 font-semibold">
                 Get Free Consultation
             </a>
             <a href="{{ route('contact') }}" 

@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+<section class="bg-gradient-to-r from-blue-600 to-primary text-white py-16">
     <div class="container mx-auto px-4">
         <div class="text-center">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Study Destinations</h1>
@@ -84,7 +84,7 @@
                     <div class="flex items-center justify-between">
                         <span class="text-sm text-gray-500">{{ $destination->region }}</span>
                         <a href="{{ route('destination.show', $destination) }}" 
-                           class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                           class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors duration-200">
                             Learn More
                         </a>
                     </div>
@@ -152,7 +152,7 @@
                     <div class="flex items-center justify-between">
                         <span class="text-sm text-gray-500">{{ $destination->region }}</span>
                         <a href="{{ route('destination.show', $destination) }}" 
-                           class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                           class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors duration-200">
                             Learn More
                         </a>
                     </div>
@@ -172,7 +172,7 @@
             <i class="fas fa-search text-gray-400 text-6xl mb-4"></i>
             <h3 class="text-xl font-medium text-gray-900 mb-2">No destinations found</h3>
             <p class="text-gray-600 mb-6">Try adjusting your search criteria or browse all destinations.</p>
-            <a href="{{ route('destinations.index') }}" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+            <a href="{{ route('destinations.index') }}" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors duration-200">
                 View All Destinations
             </a>
         </div>
@@ -186,10 +186,10 @@
         <h2 class="text-3xl font-bold mb-4">Ready to Start Your Study Abroad Journey?</h2>
         <p class="text-xl mb-8">Get expert guidance and support for your international education</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+            <a href="#" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors duration-200">
                 <i class="fas fa-phone mr-2"></i>Contact Us
             </a>
-            <a href="#" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200">
+            <a href="#" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200">
                 <i class="fas fa-calendar mr-2"></i>Book Consultation
             </a>
         </div>
