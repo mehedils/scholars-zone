@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\SuccessStoryController as PublicSuccessStoryController;
 use App\Http\Controllers\Admin\DestinationController as AdminDestinationController;
 use App\Http\Controllers\HomeController;
 
@@ -12,6 +13,10 @@ Route::get("/", [HomeController::class, 'index'])->name('home');
 // Frontend Destination Routes
 Route::get('/destinations', [DestinationController::class, 'index'])->name('destinations.index');
 Route::get('/destinations/{destination}', [DestinationController::class, 'show'])->name('destination.show');
+
+// Success Stories - Frontend
+Route::get('/success-stories', [PublicSuccessStoryController::class, 'index'])->name('success-stories.index');
+Route::get('/success-stories/{successStory:slug}', [PublicSuccessStoryController::class, 'show'])->name('success-stories.show');
 
 // Our Services Route
 Route::get('/our-services', [App\Http\Controllers\StudentEssentialController::class, 'index'])->name('our-services');
@@ -89,6 +94,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('/settings/upload-logo', [App\Http\Controllers\Admin\SettingsController::class, 'uploadLogo'])->name('settings.upload-logo');
     Route::post('/settings/delete-logo', [App\Http\Controllers\Admin\SettingsController::class, 'deleteLogo'])->name('settings.delete-logo');
     Route::get('/settings/{key}', [App\Http\Controllers\Admin\SettingsController::class, 'getSetting'])->name('settings.get');
+    
+    // Team Members Management
+    Route::resource('team-members', App\Http\Controllers\Admin\TeamMemberController::class)->names('team-members');
+    // Success Stories Management
+    Route::resource('success-stories', App\Http\Controllers\Admin\SuccessStoryController::class)->names('success-stories')->parameters([
+        'success-stories' => 'success_story',
+    ]);
     
     // Profile
     Route::get('/profile', function() {

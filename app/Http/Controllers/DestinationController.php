@@ -31,7 +31,13 @@ class DestinationController extends Controller
         $destinations = $query->paginate(12);
         $featuredDestinations = Destination::active()->featured()->orderBy('order')->limit(6)->get();
         
-        $regions = Destination::active()->distinct()->pluck('region')->sort();
+        $regions = Destination::active()
+            ->whereNotNull('region')
+            ->where('region', '!=', '')
+            ->distinct()
+            ->pluck('region')
+            ->sort()
+            ->values();
         
         return view('frontend.destinations.index', compact('destinations', 'featuredDestinations', 'regions'));
     }

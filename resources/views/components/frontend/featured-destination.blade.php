@@ -92,7 +92,7 @@
             <!-- View All Destinations Button -->
             <div class="text-center mt-12">
                 <a href="{{ route('destinations.index') }}" 
-                   class="bg-gray-800 text-white px-8 py-3 rounded-lg hover:bg-gray-900 transition inline-block">
+                   class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary transition inline-block">
                     View All Destinations
                 </a>
             </div>

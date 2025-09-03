@@ -9,6 +9,12 @@
     display: block;
 }
 
+/* Ensure active tab button always uses primary color regardless of leftover classes */
+.tab-btn.is-active {
+    background-color: var(--color-primary) !important;
+    color: #ffffff !important;
+}
+
 </style>
 
 @endpush
@@ -33,36 +39,36 @@
                         <div class="md:w-1/4">
                             <div class="space-y-2">
                                 <button
-                                    class="tab-btn w-full text-left p-4 rounded-lg bg-primary text-white font-semibold active"
+                                    class="tab-btn w-full text-left p-4 rounded-lg bg-gray-200 text-gray-700 font-semibold"
                                     onclick="openTab(event, 'usa')"
                                 >
-                                    <i class="fas fa-flag-usa mr-3"></i>United
+                                    <img src="https://flagsapi.com/US/flat/24.png" alt="US" class="inline-block mr-3 w-6 h-4">United
                                     States
                                 </button>
                                 <button
                                     class="tab-btn w-full text-left p-4 rounded-lg bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition"
                                     onclick="openTab(event, 'uk')"
                                 >
-                                    <i class="fas fa-crown mr-3"></i>United
+                                    <img src="https://flagsapi.com/GB/flat/24.png" alt="UK" class="inline-block mr-3 w-6 h-4">United
                                     Kingdom
                                 </button>
                                 <button
                                     class="tab-btn w-full text-left p-4 rounded-lg bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition"
                                     onclick="openTab(event, 'canada')"
                                 >
-                                    <i class="fas fa-maple-leaf mr-3"></i>Canada
+                                    <img src="https://flagsapi.com/CA/flat/24.png" alt="Canada" class="inline-block mr-3 w-6 h-4">Canada
                                 </button>
                                 <button
                                     class="tab-btn w-full text-left p-4 rounded-lg bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition"
                                     onclick="openTab(event, 'australia')"
                                 >
-                                    <i class="fas fa-sun mr-3"></i>Australia
+                                    <img src="https://flagsapi.com/AU/flat/24.png" alt="Australia" class="inline-block mr-3 w-6 h-4">Australia
                                 </button>
                                 <button
                                     class="tab-btn w-full text-left p-4 rounded-lg bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition"
                                     onclick="openTab(event, 'germany')"
                                 >
-                                    <i class="fas fa-beer mr-3"></i>Germany
+                                    <img src="https://flagsapi.com/DE/flat/24.png" alt="Germany" class="inline-block mr-3 w-6 h-4">Germany
                                 </button>
                             </div>
                         </div>
@@ -321,3 +327,25 @@
                 </div>
             </div>
         </section>
+        
+@push('scripts')
+<script>
+    function openTab(e, id) {
+        // Switch content
+        document.querySelectorAll('.tab-content').forEach(function (el) {
+            el.classList.remove('active');
+        });
+        var target = document.getElementById(id);
+        if (target) target.classList.add('active');
+
+        // Reset all tab button states globally (also strip any leftover color classes)
+        document.querySelectorAll('.tab-btn').forEach(function (btn) {
+            btn.classList.remove('is-active', 'bg-primary', 'text-white');
+            btn.classList.add('bg-gray-200', 'text-gray-700');
+        });
+        var current = e.currentTarget;
+        current.classList.remove('bg-gray-200', 'text-gray-700');
+        current.classList.add('is-active', 'bg-primary', 'text-white');
+    }
+</script>
+@endpush

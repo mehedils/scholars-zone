@@ -172,57 +172,57 @@
             </p>
         </div>
         
+        @php
+            $teamMembers = App\Models\TeamMember::active()->ordered()->get();
+        @endphp
+        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            @forelse($teamMembers as $member)
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div class="bg-gradient-to-r from-blue-500 to-primary p-8 text-white text-center">
-                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-user-tie text-3xl"></i>
+                    <div class="w-24 h-24 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                        @if($member->photo_path)
+                            <img src="{{ Storage::url($member->photo_path) }}" alt="{{ $member->name }}" class="w-full h-full object-cover">
+                        @else
+                            <i class="fas fa-user text-4xl"></i>
+                        @endif
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Education Counselors</h3>
-                    <p class="text-blue-100">Expert guidance for your academic journey</p>
+                    <h3 class="text-xl font-bold mb-1">{{ $member->name }}</h3>
+                    <p class="text-primary-light font-medium">{{ $member->designation }}</p>
                 </div>
                 <div class="p-6">
-                    <p class="text-gray-600">
-                        Our experienced counselors provide personalized advice on university selection, course choices, and application strategies.
-                    </p>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="bg-gradient-to-r from-primary to-pink-600 p-8 text-white text-center">
-                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-headset text-3xl"></i>
+                    @if($member->about)
+                    <p class="text-gray-600 mb-4">{{ Str::limit($member->about, 140) }}</p>
+                    @endif
+                    <div class="flex items-center justify-center space-x-4">
+                        @if($member->facebook_url)
+                            <a href="{{ $member->facebook_url }}" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-facebook-f"></i></a>
+                        @endif
+                        @if($member->twitter_url)
+                            <a href="{{ $member->twitter_url }}" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-twitter"></i></a>
+                        @endif
+                        @if($member->linkedin_url)
+                            <a href="{{ $member->linkedin_url }}" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-linkedin-in"></i></a>
+                        @endif
+                        @if($member->instagram_url)
+                            <a href="{{ $member->instagram_url }}" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-instagram"></i></a>
+                        @endif
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Support Team</h3>
-                    <p class="text-primary-light">24/7 assistance and guidance</p>
-                </div>
-                <div class="p-6">
-                    <p class="text-gray-600">
-                        Our dedicated support team is always available to help with any questions or concerns throughout your journey.
-                    </p>
                 </div>
             </div>
-            
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="bg-gradient-to-r from-green-500 to-blue-600 p-8 text-white text-center">
-                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-globe text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Global Partners</h3>
-                    <p class="text-green-100">Worldwide network of institutions</p>
-                </div>
-                <div class="p-6">
-                    <p class="text-gray-600">
-                        We maintain strong partnerships with universities and institutions across the globe to expand your opportunities.
-                    </p>
+            @empty
+            <div class="col-span-1 md:col-span-3">
+                <div class="text-center p-10 bg-gray-50 rounded-lg">
+                    <p class="text-gray-600">Team information coming soon.</p>
                 </div>
             </div>
+            @endforelse
         </div>
     </div>
 </section>
 
 <!-- Statistics Section -->
-<section class="py-16 bg-blue-600 text-white">
+<section class="py-16 bg-primary text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Impact</h2>

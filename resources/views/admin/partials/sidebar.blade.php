@@ -86,6 +86,14 @@
                     <span>Student Essentials</span>
                 </a>
             </li>
+
+            <li>
+                <a href="{{ route('admin.success-stories.index') }}" 
+                   class="flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors duration-200 {{ request()->routeIs('admin.success-stories*') ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
+                    <i class="fas fa-award w-5"></i>
+                    <span>Success Stories</span>
+                </a>
+            </li>
         </ul>
         
         <div class="px-4 mb-4">

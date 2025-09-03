@@ -10,14 +10,16 @@
             
             <!-- Search and Filter Form -->
             <form action="{{ route('destinations.index') }}" method="GET" class="max-w-4xl mx-auto">
-                <div class="flex flex-col md:flex-row gap-4">
+                <div class="bg-white/90 backdrop-blur p-4 rounded-xl shadow-md flex flex-col md:flex-row gap-4">
                     <div class="flex-1">
-                        <input type="text" name="search" value="{{ request('search') }}" 
+                        <label class="sr-only" for="search">Search</label>
+                        <input type="text" id="search" name="search" value="{{ request('search') }}" 
                                placeholder="Search destinations..." 
-                               class="w-full px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-white">
+                               class="w-full px-4 py-3 rounded-lg text-gray-900 border border-white/30 focus:ring-2 focus:ring-primary focus:border-transparent">
                     </div>
-                    <div class="md:w-48">
-                        <select name="region" class="w-full px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-white">
+                    <div class="md:w-64">
+                        <label class="sr-only" for="region">Region</label>
+                        <select id="region" name="region" class="w-full px-4 py-3 rounded-lg text-gray-900 border border-white/30 focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
                             <option value="">All Regions</option>
                             @foreach($regions as $region)
                                 <option value="{{ $region }}" {{ request('region') == $region ? 'selected' : '' }}>
@@ -26,9 +28,11 @@
                             @endforeach
                         </select>
                     </div>
-                    <button type="submit" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
-                        <i class="fas fa-search mr-2"></i>Search
-                    </button>
+                    <div class="md:w-auto">
+                        <button type="submit" class="w-full md:w-auto bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors duration-200">
+                            <i class="fas fa-search mr-2"></i>Search
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -186,10 +190,10 @@
         <h2 class="text-3xl font-bold mb-4">Ready to Start Your Study Abroad Journey?</h2>
         <p class="text-xl mb-8">Get expert guidance and support for your international education</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors duration-200">
+            <a href="{{ route('contact') }}" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors duration-200">
                 <i class="fas fa-phone mr-2"></i>Contact Us
             </a>
-            <a href="#" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200">
+            <a href="/#consultation" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200">
                 <i class="fas fa-calendar mr-2"></i>Book Consultation
             </a>
         </div>

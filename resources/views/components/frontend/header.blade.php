@@ -16,7 +16,7 @@
             </a>
             <nav class="hidden md:flex space-x-8">
                 <a
-                    href="#home"
+                    href="/"
                     class="text-gray-700 hover:text-primary transition"
                 >Home</a
                 >
@@ -35,9 +35,9 @@
                 >Destinations</a
                 >
                 <a
-                    href="#blog"
+                    href="{{ route('success-stories.index') }}"
                     class="text-gray-700 hover:text-primary transition"
-                >Blog</a
+                >Success Stories</a
                 >
                 <a
                     href="{{ route('contact') }}"
@@ -63,7 +63,7 @@
             <div class="px-4 py-6 h-full overflow-y-auto">
                 <nav class="flex flex-col space-y-6">
                     <a
-                        href="#home"
+                        href="/"
                         class="text-lg text-gray-700 hover:text-primary transition-colors duration-200 py-3 border-b border-gray-100"
                         onclick="closeMobileMenu()"
                     >
@@ -91,11 +91,11 @@
                         <i class="fas fa-map-marker-alt mr-3 text-primary"></i>Destinations
                     </a>
                     <a
-                        href="#blog"
+                        href="{{ route('success-stories.index') }}"
                         class="text-lg text-gray-700 hover:text-primary transition-colors duration-200 py-3 border-b border-gray-100"
                         onclick="closeMobileMenu()"
                     >
-                        <i class="fas fa-blog mr-3 text-primary"></i>Blog
+                        <i class="fas fa-award mr-3 text-primary"></i>Success Stories
                     </a>
                     <a
                         href="{{ route('contact') }}"
