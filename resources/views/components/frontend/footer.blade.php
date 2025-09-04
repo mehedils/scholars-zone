@@ -77,7 +77,7 @@
                         <div class="space-y-3">
                             <div class="flex items-center">
                                 <i class="fas fa-map-marker-alt mr-3 text-primary"></i>
-                                <span class="text-gray-400">Dhaka, Bangladesh</span>
+                                <span class="text-gray-400">Mirpur-1, Dhaka-1216, Bangladesh</span>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-phone mr-3 text-primary"></i>

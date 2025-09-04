@@ -15,8 +15,8 @@ Route::get('/destinations', [DestinationController::class, 'index'])->name('dest
 Route::get('/destinations/{destination}', [DestinationController::class, 'show'])->name('destination.show');
 
 // Success Stories - Frontend
-Route::get('/success-stories', [PublicSuccessStoryController::class, 'index'])->name('success-stories.index');
-Route::get('/success-stories/{successStory:slug}', [PublicSuccessStoryController::class, 'show'])->name('success-stories.show');
+Route::get('/success-stories', [App\Http\Controllers\SuccessStoryController::class, 'index'])->name('success-stories.index');
+Route::get('/success-stories/{successStory:slug}', [App\Http\Controllers\SuccessStoryController::class, 'show'])->name('success-stories.show');
 
 // Our Services Route
 Route::get('/our-services', [App\Http\Controllers\StudentEssentialController::class, 'index'])->name('our-services');
@@ -101,6 +101,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('success-stories', App\Http\Controllers\Admin\SuccessStoryController::class)->names('success-stories')->parameters([
         'success-stories' => 'success_story',
     ]);
+    Route::post('/success-stories/upload-image', [App\Http\Controllers\Admin\SuccessStoryController::class, 'uploadImage'])->name('success-stories.upload-image');
+    
+    // Video Success Stories Management
+    Route::resource('video-success-stories', App\Http\Controllers\Admin\VideoSuccessStoryController::class)->names('video-success-stories')->parameters([
+        'video-success-stories' => 'video_success_story',
+    ]);
+    Route::post('/video-success-stories/{video_success_story}/toggle', [App\Http\Controllers\Admin\VideoSuccessStoryController::class, 'toggle'])->name('video-success-stories.toggle');
     
     // Profile
     Route::get('/profile', function() {

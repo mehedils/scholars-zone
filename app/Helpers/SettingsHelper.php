@@ -27,7 +27,7 @@ class SettingsHelper
      */
     public static function siteName()
     {
-        return self::get('site_name', 'Scholars Zone Global');
+        return self::get('site_name', 'Scholars Global Network');
     }
 
     /**
@@ -35,7 +35,7 @@ class SettingsHelper
      */
     public static function siteTitle()
     {
-        return self::get('site_title', 'Scholars Zone Global - Your Trusted Study Abroad Partner');
+        return self::get('site_title', 'Scholars Global Network - Your Trusted Study Abroad Partner');
     }
 
     /**
@@ -60,7 +60,7 @@ class SettingsHelper
      */
     public static function contactEmail()
     {
-        return self::get('contact_email', 'contact@scholarszone.com');
+        return self::get('contact_email', 'info@scholarsglobalnetwork.com');
     }
 
     /**
@@ -68,7 +68,7 @@ class SettingsHelper
      */
     public static function contactPhone()
     {
-        return self::get('contact_phone', '+1 (555) 123-4567');
+        return self::get('contact_phone', '+88 01344-823701');
     }
 
     /**
@@ -76,7 +76,15 @@ class SettingsHelper
      */
     public static function contactAddress()
     {
-        return self::get('contact_address', '123 Gulshan Avenue, Dhaka 1212, Bangladesh');
+        return self::get('contact_address', 'Level-12, RUPAYAN Latifa Shamsuddin Square, Mirpur-1, Dhaka-1216, Bangladesh');
+    }
+
+    /**
+     * Get USA office address
+     */
+    public static function contactAddressUsa()
+    {
+        return self::get('contact_address_usa', '585 East 16th Street, Brooklyn, New York 11226, USA');
     }
 
     /**
@@ -84,7 +92,7 @@ class SettingsHelper
      */
     public static function businessHours()
     {
-        return self::get('business_hours', 'Mon - Sat: 9:00 AM - 6:00 PM');
+        return self::get('business_hours', 'From Sunday to Saturday: 10:00 A.M. To 7:00 P.M. (Friday: Closed)');
     }
 
     /**
@@ -92,7 +100,39 @@ class SettingsHelper
      */
     public static function footerEmail()
     {
-        return self::get('contact_email_footer', 'info@scholarszonebd.com');
+        return self::get('contact_email_footer', 'info@scholarsglobalnetwork.com');
+    }
+
+    /**
+     * Get secondary email
+     */
+    public static function secondaryEmail()
+    {
+        return self::get('contact_email_secondary', 'scholarsglobalnetwork@gmail.com');
+    }
+
+    /**
+     * Get secondary phone
+     */
+    public static function secondaryPhone()
+    {
+        return self::get('contact_phone_secondary', '+88 01344-823702');
+    }
+
+    /**
+     * Get tertiary phone
+     */
+    public static function tertiaryPhone()
+    {
+        return self::get('contact_phone_tertiary', '+88 01344-823703');
+    }
+
+    /**
+     * Get Google Maps URL
+     */
+    public static function googleMapsUrl()
+    {
+        return self::get('google_maps_url', 'https://maps.app.goo.gl/uy7u4SBxvnTJMN2f6');
     }
 
     /**

@@ -16,7 +16,7 @@ class SettingsSeeder extends Seeder
             // General Settings
             [
                 "key" => "site_name",
-                "value" => "Scholars Zone Global",
+                "value" => "Scholars Global Network",
                 "type" => "text",
                 "group" => "general",
                 "label" => "Site Name",
@@ -25,7 +25,7 @@ class SettingsSeeder extends Seeder
             [
                 "key" => "site_title",
                 "value" =>
-                    "Scholars Zone Global - Your Trusted Study Abroad Partner",
+                    "Scholars Global Network - Your Trusted Study Abroad Partner",
                 "type" => "text",
                 "group" => "general",
                 "label" => "Site Title",
@@ -58,7 +58,7 @@ class SettingsSeeder extends Seeder
             ],
             [
                 "key" => "contact_email",
-                "value" => "contact@scholarsglobalnetwork.com",
+                "value" => "info@scholarsglobalnetwork.com",
                 "type" => "text",
                 "group" => "general",
                 "label" => "Contact Email",
@@ -66,7 +66,7 @@ class SettingsSeeder extends Seeder
             ],
             [
                 "key" => "contact_phone",
-                "value" => "+880 1926011527",
+                "value" => "+88 01344-823701",
                 "type" => "text",
                 "group" => "general",
                 "label" => "Contact Phone",
@@ -257,7 +257,7 @@ class SettingsSeeder extends Seeder
                     [
                         "name" => "WhatsApp",
                         "icon" => "fab fa-whatsapp",
-                        "url" => "+880 1926011527",
+                        "url" => "+88 01344-823701",
                         "color" => "text-green-600",
                         "hover_color" => "hover:text-green-800",
                         "enabled" => true,

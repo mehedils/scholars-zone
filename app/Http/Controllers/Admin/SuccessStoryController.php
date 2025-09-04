@@ -85,6 +85,16 @@ class SuccessStoryController extends Controller
         $success_story->delete();
         return back()->with('success', 'Success story deleted.');
     }
+
+    public function uploadImage(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|image|max:3072',
+        ]);
+
+        $path = $request->file('file')->store('success-stories', 'public');
+        return response()->json(['location' => Storage::url($path)]);
+    }
 }
 
 

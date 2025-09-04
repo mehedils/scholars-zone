@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             StudentEssentialSeeder::class,
             TeamMemberSeeder::class,
             SuccessStorySeeder::class,
+            VideoSuccessStorySeeder::class,
         ]);
     }
 }

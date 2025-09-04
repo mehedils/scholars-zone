@@ -28,15 +28,28 @@ use Illuminate\Support\Collection;
                 <h2 class="text-3xl font-bold text-gray-900 mb-8">Get In Touch</h2>
 
                 <div class="space-y-6">
-                    <!-- Address -->
+                    <!-- Bangladesh Office -->
                     <div class="flex items-start space-x-4">
                         <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
                             <i class="fas fa-map-marker-alt text-purple-600 text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Our Office</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Bangladesh Office</h3>
                             <p class="text-gray-600">
                                 <span>{{ SettingsHelper::contactAddress() }}</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- USA Office -->
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-map-marker-alt text-red-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">USA Office</h3>
+                            <p class="text-gray-600">
+                                <span>{{ SettingsHelper::contactAddressUsa() }}</span>
                             </p>
                         </div>
                     </div>
@@ -47,13 +60,16 @@ use Illuminate\Support\Collection;
                             <i class="fas fa-phone text-blue-600 text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Phone</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Phone Numbers</h3>
                             <p class="text-gray-600">
-                                <a href="tel:@contactPhone" class="hover:text-blue-600 transition-colors">
-                                    @contactPhone
-                                </a><br>
-                                <a href="tel:{{ SettingsHelper::footerPhone() }}" class="hover:text-blue-600 transition-colors">
-                                    {{ SettingsHelper::footerPhone() }}
+                                <a href="tel:{{ SettingsHelper::contactPhone() }}" class="hover:text-blue-600 transition-colors block">
+                                    {{ SettingsHelper::contactPhone() }}
+                                </a>
+                                <a href="tel:{{ SettingsHelper::secondaryPhone() }}" class="hover:text-blue-600 transition-colors block">
+                                    {{ SettingsHelper::secondaryPhone() }}
+                                </a>
+                                <a href="tel:{{ SettingsHelper::tertiaryPhone() }}" class="hover:text-blue-600 transition-colors block">
+                                    {{ SettingsHelper::tertiaryPhone() }}
                                 </a>
                             </p>
                         </div>
@@ -65,13 +81,13 @@ use Illuminate\Support\Collection;
                             <i class="fas fa-envelope text-green-600 text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Email</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Email Addresses</h3>
                             <p class="text-gray-600">
-                                <a href="mailto:info@scholarszone.com" class="hover:text-green-600 transition-colors">
-                                    @contactEmail
-                                </a><br>
-                                <a href="mailto:support@scholarszone.com" class="hover:text-green-600 transition-colors">
-                                    {{ SettingsHelper::footerEmail() }}
+                                <a href="mailto:{{ SettingsHelper::contactEmail() }}" class="hover:text-green-600 transition-colors block">
+                                    {{ SettingsHelper::contactEmail() }}
+                                </a>
+                                <a href="mailto:{{ SettingsHelper::secondaryEmail() }}" class="hover:text-green-600 transition-colors block">
+                                    {{ SettingsHelper::secondaryEmail() }}
                                 </a>
                             </p>
                         </div>
@@ -230,12 +246,17 @@ use Illuminate\Support\Collection;
             <p class="text-gray-600">Visit our office or get directions</p>
         </div>
 
-        <div class="bg-gray-200 rounded-lg h-96 flex items-center justify-center">
-            <div class="text-center">
-                <i class="fas fa-map-marked-alt text-6xl text-gray-400 mb-4"></i>
-                <p class="text-gray-600 text-lg">Interactive Map Coming Soon</p>
-                <p class="text-gray-500">We're working on integrating a map to show our location</p>
-            </div>
+        <div class="rounded-lg overflow-hidden shadow-lg">
+<iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d912.6302883690485!2d90.35484079999999!3d23.800060199999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c13ac7bb60b5%3A0xd018933c0f28c07d!2sRUPAYAN%20Latifa%20Shamsuddin%20Square!5e0!3m2!1sen!2sbd!4v1756966656596!5m2!1sen!2sbd" 
+    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+    title="Scholars Global Network - Bangladesh Office Location">
+</iframe>
+        </div>
+        
+        <!-- Alternative: Simple Google Maps embed with address -->
+        <div class="mt-4 text-center">
+            <p class="text-sm text-gray-600 mb-2">Can't see the map? <a href="{{ SettingsHelper::googleMapsUrl() }}" target="_blank" class="text-primary hover:underline">View on Google Maps</a></p>
         </div>
     </div>
 </section>

@@ -70,14 +70,14 @@ tinymce.init({
   branding: false,
   promotion: false,
   file_picker_types: 'image',
-  images_upload_url: '{{ route("admin.destinations.upload-file") }}',
+  images_upload_url: '{{ route("admin.success-stories.upload-image") }}',
   automatic_uploads: true,
   images_reuse_filename: true,
   setup(editor){ editor.on('change',()=>editor.save()); },
   images_upload_handler: function (blobInfo, success, failure) {
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = false;
-    xhr.open('POST', '{{ route("admin.destinations.upload-file") }}');
+    xhr.open('POST', '{{ route("admin.success-stories.upload-image") }}');
     xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
     xhr.onload = function() {
       if (xhr.status != 200) { failure('HTTP Error: ' + xhr.status); return; }
