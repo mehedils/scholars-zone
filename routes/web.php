@@ -8,6 +8,7 @@ use App\Http\Controllers\SuccessStoryController as PublicSuccessStoryController;
 use App\Http\Controllers\Admin\DestinationController as AdminDestinationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\SitemapController;
 
 Route::get("/", [HomeController::class, 'index'])->name('home');
 
@@ -31,6 +32,10 @@ Route::post('/consultation', [App\Http\Controllers\ConsultationController::class
 // Contact Page Routes
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+
+// SEO Routes
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+Route::get('/robots.txt', [SitemapController::class, 'robots'])->name('robots');
 
 
 
