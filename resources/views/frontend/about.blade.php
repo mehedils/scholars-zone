@@ -263,7 +263,7 @@
             Join thousands of students who have successfully achieved their dreams of international education with our guidance.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ route('consultation.store') }}" 
+            <a href="/#consultation" 
                class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary-dark transition-colors duration-200 font-semibold">
                 Get Free Consultation
             </a>

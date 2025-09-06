@@ -19,7 +19,7 @@
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                         <!-- Destination Image -->
                         <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
-                            @if($destination->featured_image)
+                            @if($destination->featured_image_url)
                                 <img src="{{ $destination->featured_image_url }}" alt="{{ $destination->name }}" class="w-full h-full object-cover">
                             @else
                                 <div class="flex items-center justify-center h-full">
