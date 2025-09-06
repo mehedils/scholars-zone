@@ -43,7 +43,7 @@
                 <p class="text-gray-600 mb-4">
                     Easy access to finances so you don't delay your dreams.
                 </p>
-                <a href="#" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark">
+                <a href="{{ route('contact') }}" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark">
                     Learn more <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -59,7 +59,7 @@
                 <p class="text-gray-600 mb-4">
                     Safe, secure and fast payments to your institution and other key services.
                 </p>
-                <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700">
+                <a href="{{ route('contact') }}" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700">
                     Learn more <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -75,7 +75,7 @@
                 <p class="text-gray-600 mb-4">
                     Your choice, your health cover, your peace of mind abroad.
                 </p>
-                <a href="#" class="inline-flex items-center text-green-600 font-semibold hover:text-green-700">
+                <a href="{{ route('contact') }}" class="inline-flex items-center text-green-600 font-semibold hover:text-green-700">
                     Learn more <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -91,7 +91,7 @@
                 <p class="text-gray-600 mb-4">
                     Open a bank account before you arrive.
                 </p>
-                <a href="#" class="inline-flex items-center text-yellow-600 font-semibold hover:text-yellow-700">
+                <a href="{{ route('contact') }}" class="inline-flex items-center text-yellow-600 font-semibold hover:text-yellow-700">
                     Learn more <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -107,7 +107,7 @@
                 <p class="text-gray-600 mb-4">
                     Student apartment or homestay, the choice is yours.
                 </p>
-                <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-700">
+                <a href="{{ route('contact') }}" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-700">
                     Learn more <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -123,7 +123,7 @@
                 <p class="text-gray-600 mb-4">
                     No SIM? No problem – We've got it covered.
                 </p>
-                <a href="#" class="inline-flex items-center text-pink-600 font-semibold hover:text-pink-700">
+                <a href="{{ route('contact') }}" class="inline-flex items-center text-pink-600 font-semibold hover:text-pink-700">
                     Learn more <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -139,7 +139,7 @@
                 <p class="text-gray-600 mb-4">
                     If you're under 18, we'll find you a guardian.
                 </p>
-                <a href="#" class="inline-flex items-center text-red-600 font-semibold hover:text-red-700">
+                <a href="{{ route('contact') }}" class="inline-flex items-center text-red-600 font-semibold hover:text-red-700">
                     Learn more <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -155,7 +155,7 @@
                 <p class="text-gray-600 mb-4">
                     Start enjoying global student discounts on food, fashion, travel, and more.
                 </p>
-                <a href="#" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700">
+                <a href="{{ route('contact') }}" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700">
                     Learn more <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>

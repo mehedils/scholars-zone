@@ -6,7 +6,7 @@
     <div class="absolute inset-0 bg-black opacity-20"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">About Scholars Zone</h1>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">@siteName</h1>
             <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
                 Empowering students to achieve their dreams through expert guidance and comprehensive support for international education.
             </p>

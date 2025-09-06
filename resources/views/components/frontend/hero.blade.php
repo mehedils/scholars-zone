@@ -69,9 +69,9 @@
                                                 Get Started
                                             </button>
                                         @endif
-                                        <button class="border-2 border-white text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition">
+                                        <a href="{{ route('contact') }}" class="border-2 border-white text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition">
                                             Learn More
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

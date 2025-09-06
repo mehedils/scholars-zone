@@ -68,7 +68,7 @@
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ $essential['title'] }}</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">{{ $essential['description'] }}</p>
                     @if($essential['show_learn_more'])
-                    <a href="#" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
                         Learn More <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                     @endif
@@ -84,7 +84,7 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Passport</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">Valid passport with at least 6 months validity beyond your intended stay.</p>
-                    <a href="#" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
                         Learn More <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -96,7 +96,7 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Academic Documents</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">Transcripts, certificates, and academic records from previous institutions.</p>
-                    <a href="#" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
                         Learn More <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -108,7 +108,7 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Language Test Scores</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">IELTS, TOEFL, or other required language proficiency test results.</p>
-                    <a href="#" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
                         Learn More <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -120,7 +120,7 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Financial Documents</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">Bank statements, scholarship letters, or financial guarantee documents.</p>
-                    <a href="#" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
                         Learn More <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -132,7 +132,7 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Medical Records</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">Health certificates and vaccination records as required by destination country.</p>
-                    <a href="#" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
                         Learn More <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -144,7 +144,7 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Personal Statement</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">Well-written personal statement explaining your study abroad goals.</p>
-                    <a href="#" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
                         Learn More <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -156,7 +156,7 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Letters of Recommendation</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">Strong recommendation letters from teachers, employers, or mentors.</p>
-                    <a href="#" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
                         Learn More <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -168,7 +168,7 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Travel Insurance</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">Comprehensive travel and health insurance coverage for your stay.</p>
-                    <a href="#" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
+                    <a href="{{ route('contact') }}" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
                         Learn More <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>

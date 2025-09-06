@@ -40,8 +40,12 @@
                                    class="hover:text-primary transition">Destinations</a>
                             </li>
                             <li>
-                                <a href="#blog" 
-                                   class="hover:text-primary transition">Blog</a>
+                                <a href="{{ route('success-stories.index') }}" 
+                                   class="hover:text-primary transition">Success Stories</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('contact') }}" 
+                                   class="hover:text-primary transition">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -50,23 +54,23 @@
                         <h3 class="text-lg font-semibold mb-4">Services</h3>
                         <ul class="space-y-2">
                             <li>
-                                <a href="#" 
+                                <a href="{{ route('our-services') }}" 
                                    class="hover:text-primary transition">University Selection</a>
                             </li>
                             <li>
-                                <a href="#" 
+                                <a href="{{ route('our-services') }}" 
                                    class="hover:text-primary transition">Visa Application</a>
                             </li>
                             <li>
-                                <a href="#" 
+                                <a href="{{ route('our-services') }}" 
                                    class="hover:text-primary transition">Documentation</a>
                             </li>
                             <li>
-                                <a href="#" 
+                                <a href="{{ route('our-services') }}" 
                                    class="hover:text-primary transition">Financial Planning</a>
                             </li>
                             <li>
-                                <a href="#" 
+                                <a href="{{ route('our-services') }}" 
                                    class="hover:text-primary transition">Travel Support</a>
                             </li>
                         </ul>

@@ -110,7 +110,7 @@
                 <div class="mt-8 pt-6 border-t border-gray-200">
                     <div class="text-center">
                         <h3 class="text-lg font-semibold text-primary mb-4">Get Started Today</h3>
-                        <a href="#contact"
+                        <a href="{{ route('contact') }}"
                            class="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors duration-200"
                            onclick="closeMobileMenu()">
                             Book Consultation

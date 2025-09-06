@@ -145,10 +145,10 @@
                     <h3 class="text-lg font-semibold mb-4">Ready to Study in {{ $destination->name }}?</h3>
                     <p class="text-sm mb-6">Get expert guidance and support for your study abroad journey.</p>
                     <div class="space-y-3">
-                        <a href="#" class="w-full bg-white text-blue-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 text-center block font-semibold">
+                        <a href="{{ route('contact') }}" class="w-full bg-white text-blue-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 text-center block font-semibold">
                             <i class="fas fa-phone mr-2"></i>Contact Us
                         </a>
-                        <a href="#" class="w-full bg-transparent border-2 border-white text-white px-4 py-2 rounded-lg hover:bg-white hover:text-blue-600 transition-colors duration-200 text-center block font-semibold">
+                        <a href="{{ route('contact') }}" class="w-full bg-transparent border-2 border-white text-white px-4 py-2 rounded-lg hover:bg-white hover:text-blue-600 transition-colors duration-200 text-center block font-semibold">
                             <i class="fas fa-calendar mr-2"></i>Book Consultation
                         </a>
                     </div>
@@ -186,10 +186,10 @@
         <h2 class="text-3xl font-bold mb-4">Start Your Study Abroad Journey Today</h2>
         <p class="text-xl mb-8">Get expert guidance and support for your international education</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors duration-200">
+            <a href="{{ route('contact') }}" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors duration-200">
                 <i class="fas fa-phone mr-2"></i>Contact Us
             </a>
-            <a href="#" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200">
+            <a href="{{ route('contact') }}" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200">
                 <i class="fas fa-calendar mr-2"></i>Book Consultation
             </a>
         </div>
