@@ -6,11 +6,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Contact;
+use App\Helpers\SeoHelper;
 
 class ContactController extends Controller
 {
     public function index()
     {
+        // Set SEO data for contact page
+        SeoHelper::set([
+            'title' => 'Contact Us',
+            'description' => 'Get in touch with our study abroad experts. Contact Scholars Global Network for personalized guidance on your international education journey.',
+            'keywords' => 'contact us, study abroad consultation, education guidance, international education support',
+            'type' => 'website'
+        ]);
+        
         return view('frontend.contact');
     }
 

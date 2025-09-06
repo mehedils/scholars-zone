@@ -7,6 +7,7 @@ use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\SuccessStoryController as PublicSuccessStoryController;
 use App\Http\Controllers\Admin\DestinationController as AdminDestinationController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
 
 Route::get("/", [HomeController::class, 'index'])->name('home');
 
@@ -22,9 +23,7 @@ Route::get('/success-stories/{successStory:slug}', [App\Http\Controllers\Success
 Route::get('/our-services', [App\Http\Controllers\StudentEssentialController::class, 'index'])->name('our-services');
 
 // About Page Route
-Route::get('/about', function() {
-    return view('frontend.about');
-})->name('about');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 // Consultation Form Submission
 Route::post('/consultation', [App\Http\Controllers\ConsultationController::class, 'store'])->name('consultation.store');

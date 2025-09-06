@@ -57,6 +57,22 @@ class SettingsSeeder extends Seeder
                 "description" => "Your website URL",
             ],
             [
+                "key" => "default_seo_keywords",
+                "value" => "study abroad, international education, scholarship, university admission, visa assistance, education consulting",
+                "type" => "textarea",
+                "group" => "general",
+                "label" => "Default SEO Keywords",
+                "description" => "Default keywords for SEO meta tags",
+            ],
+            [
+                "key" => "default_seo_image",
+                "value" => "/images/logo.png",
+                "type" => "image",
+                "group" => "general",
+                "label" => "Default SEO Image",
+                "description" => "Default image for social media sharing",
+            ],
+            [
                 "key" => "contact_email",
                 "value" => "info@scholarsglobalnetwork.com",
                 "type" => "text",

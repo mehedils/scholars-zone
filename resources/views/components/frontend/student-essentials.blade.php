@@ -67,9 +67,11 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ $essential['title'] }}</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">{{ $essential['description'] }}</p>
+                    @if($essential['show_learn_more'])
                     <a href="#" class="inline-flex items-center text-primary font-semibold hover:text-primary-dark mt-3 text-sm">
                         Learn More <i class="fas fa-arrow-right ml-1"></i>
                     </a>
+                    @endif
                 </div>
             @endforeach
             
