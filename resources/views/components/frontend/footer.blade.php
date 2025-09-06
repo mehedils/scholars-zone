@@ -111,6 +111,10 @@
                     <p class="text-gray-400">
                         © {{ date('Y') }} @siteName. All rights reserved.
                     </p>
+                    <p class="text-gray-500 text-sm">
+                        Powered by <a href="https://winrysoft.com" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-400 transition-colors">WinrySoft</a>
+                    </p>
                 </div>
+                
             </div>
         </footer>

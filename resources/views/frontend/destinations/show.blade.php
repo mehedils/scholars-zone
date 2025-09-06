@@ -3,7 +3,12 @@
 @section('content')
 <!-- Hero Section -->
 <section class="relative h-96 bg-gradient-to-r from-blue-600 to-primary">
-    <div class="absolute inset-0 bg-black opacity-30"></div>
+    @if($destination->featured_image)
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('{{ $destination->featured_image_url }}');"></div>
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+    @else
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+    @endif
     <div class="relative h-full flex items-center">
         <div class="container mx-auto px-4 text-white">
             <div class="max-w-4xl">
@@ -40,6 +45,13 @@
         <div class="grid lg:grid-cols-3 gap-8">
             <!-- Main Content -->
             <div class="lg:col-span-2">
+                <!-- Featured Image Section -->
+                @if($destination->featured_image)
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
+                    <img src="{{ $destination->featured_image_url }}" alt="{{ $destination->name }}" class="w-full h-64 md:h-80 object-cover">
+                </div>
+                @endif
+
                 <!-- About Section -->
                 <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">About {{ $destination->name }}</h2>
