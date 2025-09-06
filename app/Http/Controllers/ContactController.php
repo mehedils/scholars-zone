@@ -27,10 +27,10 @@ class ContactController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'nullable|string|max:20',
-            'subject' => 'required|string|max:255',
-            'message' => 'required|string|max:2000',
+            'email' => 'nullable|email|max:255',
+            'phone' => 'required|string|max:20',
+            'subject' => 'nullable|string|max:255',
+            'message' => 'nullable|string|max:2000',
         ]);
 
         if ($validator->fails()) {
@@ -46,7 +46,7 @@ class ContactController extends Controller
             Contact::create($request->all());
             
             // Send email notification (optional)
-            // Mail::to('admin@scholarszone.com')->send(new ContactFormMail($request->all()));
+            // Mail::to('admin@ScholarsGlobal_Network.com')->send(new ContactFormMail($request->all()));
             
             return response()->json([
                 'success' => true,

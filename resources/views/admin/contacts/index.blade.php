@@ -8,6 +8,12 @@
             <h1 class="text-2xl font-bold text-gray-900">Contact Messages</h1>
             <p class="text-gray-600">Manage contact form submissions and inquiries.</p>
         </div>
+        <div class="flex space-x-3">
+            <a href="{{ route('admin.contacts.export.csv', request()->query()) }}" 
+               class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200 inline-flex items-center">
+                <i class="fas fa-download mr-2"></i>Export CSV
+            </a>
+        </div>
     </div>
 
     <!-- Statistics Cards -->

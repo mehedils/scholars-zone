@@ -9,7 +9,11 @@
             <p class="text-gray-600">Manage student consultation requests and appointments.</p>
         </div>
         <div class="flex space-x-3">
-            <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200">
+            <a href="{{ route('admin.consultations.export.csv', request()->query()) }}" 
+               class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200 inline-flex items-center">
+                <i class="fas fa-download mr-2"></i>Export CSV
+            </a>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">
                 <i class="fas fa-calendar-plus mr-2"></i>Schedule Meeting
             </button>
         </div>

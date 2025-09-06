@@ -62,10 +62,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Consultations Management
     Route::resource('consultations', App\Http\Controllers\Admin\ConsultationController::class)->names('consultations');
     Route::post('/consultations/{consultation}/update-status', [App\Http\Controllers\Admin\ConsultationController::class, 'updateStatus'])->name('consultations.update-status');
+    Route::get('/consultations/export/csv', [App\Http\Controllers\Admin\ConsultationController::class, 'exportCsv'])->name('consultations.export.csv');
     
     // Contact Messages Management
     Route::resource('contacts', App\Http\Controllers\Admin\ContactController::class)->names('contacts');
     Route::post('/contacts/{contact}/update-status', [App\Http\Controllers\Admin\ContactController::class, 'updateStatus'])->name('contacts.update-status');
+    Route::get('/contacts/export/csv', [App\Http\Controllers\Admin\ContactController::class, 'exportCsv'])->name('contacts.export.csv');
     
     // Settings Routes
     Route::get('/settings/general', [App\Http\Controllers\Admin\SettingsController::class, 'general'])->name('settings.general');

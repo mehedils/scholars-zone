@@ -111,18 +111,48 @@ use Illuminate\Support\Collection;
                 <div class="mt-8">
                     <h3 class="text-lg font-semibold text-gray-900 mb-4">Follow Us</h3>
                     <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/p/Scholars-Global-Network-SGN-61575732518258/" target="_blank" class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://twitter.com/scholarszone" target="_blank" class="w-10 h-10 bg-blue-400 rounded-lg flex items-center justify-center text-white hover:bg-blue-500 transition-colors">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://instagram.com/scholarszone" target="_blank" class="w-10 h-10 bg-pink-600 rounded-lg flex items-center justify-center text-white hover:bg-pink-700 transition-colors">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://linkedin.com/company/scholarszone" target="_blank" class="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center text-white hover:bg-blue-900 transition-colors">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+                        @foreach(\App\Helpers\SettingsHelper::getEnabledSocialPlatforms() as $platform)
+                            @php
+                                $href = $platform['url'];
+                                if (isset($platform['is_phone']) && $platform['is_phone']) {
+                                    $href = 'https://wa.me/' . str_replace(['+', ' ', '-'], '', $platform['url']);
+                                } elseif (isset($platform['is_username']) && $platform['is_username']) {
+                                    $href = 'https://t.me/' . str_replace('@', '', $platform['url']);
+                                }
+                                
+                                // Get platform-specific background color
+                                $bgColor = 'bg-gray-600';
+                                $hoverColor = 'hover:bg-gray-700';
+                                
+                                if (strpos($platform['icon'], 'facebook') !== false) {
+                                    $bgColor = 'bg-blue-600';
+                                    $hoverColor = 'hover:bg-blue-700';
+                                } elseif (strpos($platform['icon'], 'twitter') !== false) {
+                                    $bgColor = 'bg-blue-400';
+                                    $hoverColor = 'hover:bg-blue-500';
+                                } elseif (strpos($platform['icon'], 'instagram') !== false) {
+                                    $bgColor = 'bg-pink-600';
+                                    $hoverColor = 'hover:bg-pink-700';
+                                } elseif (strpos($platform['icon'], 'linkedin') !== false) {
+                                    $bgColor = 'bg-blue-800';
+                                    $hoverColor = 'hover:bg-blue-900';
+                                } elseif (strpos($platform['icon'], 'youtube') !== false) {
+                                    $bgColor = 'bg-red-600';
+                                    $hoverColor = 'hover:bg-red-700';
+                                } elseif (strpos($platform['icon'], 'whatsapp') !== false) {
+                                    $bgColor = 'bg-green-600';
+                                    $hoverColor = 'hover:bg-green-700';
+                                }
+                            @endphp
+                            
+                            <a href="{{ $href }}" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="w-10 h-10 {{ $bgColor }} rounded-lg flex items-center justify-center text-white {{ $hoverColor }} transition-colors"
+                               title="{{ $platform['name'] }}">
+                                <i class="{{ $platform['icon'] }}"></i>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -248,7 +278,8 @@ use Illuminate\Support\Collection;
 
         <div class="rounded-lg overflow-hidden shadow-lg">
 <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d912.6302883690485!2d90.35484079999999!3d23.800060199999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c13ac7bb60b5%3A0xd018933c0f28c07d!2sRUPAYAN%20Latifa%20Shamsuddin%20Square!5e0!3m2!1sen!2sbd!4v1756966656596!5m2!1sen!2sbd" 
+
+    src="{{ SettingsHelper::googleMapsUrl() }}" 
     width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
     title="Scholars Global Network - Bangladesh Office Location">
 </iframe>

@@ -241,7 +241,7 @@ class SettingsSeeder extends Seeder
                     [
                         "name" => "Twitter",
                         "icon" => "fab fa-twitter",
-                        "url" => "https://twitter.com/scholarszone",
+                        "url" => "https://twitter.com/ScholarsGlobal_Network",
                         "color" => "text-blue-400",
                         "hover_color" => "hover:text-blue-600",
                         "enabled" => true,
@@ -249,7 +249,7 @@ class SettingsSeeder extends Seeder
                     [
                         "name" => "LinkedIn",
                         "icon" => "fab fa-linkedin",
-                        "url" => "https://linkedin.com/company/scholarszone",
+                        "url" => "https://linkedin.com/company/ScholarsGlobal_Network",
                         "color" => "text-blue-700",
                         "hover_color" => "hover:text-blue-900",
                         "enabled" => true,
@@ -257,7 +257,7 @@ class SettingsSeeder extends Seeder
                     [
                         "name" => "Instagram",
                         "icon" => "fab fa-instagram",
-                        "url" => "https://instagram.com/scholarszone",
+                        "url" => "https://instagram.com/ScholarsGlobal_Network",
                         "color" => "text-pink-600",
                         "hover_color" => "hover:text-pink-800",
                         "enabled" => true,
@@ -265,7 +265,7 @@ class SettingsSeeder extends Seeder
                     [
                         "name" => "YouTube",
                         "icon" => "fab fa-youtube",
-                        "url" => "https://youtube.com/@scholarszone",
+                        "url" => "https://youtube.com/@ScholarsGlobal_Network",
                         "color" => "text-red-600",
                         "hover_color" => "hover:text-red-800",
                         "enabled" => true,
@@ -282,7 +282,7 @@ class SettingsSeeder extends Seeder
                     [
                         "name" => "Telegram",
                         "icon" => "fab fa-telegram",
-                        "url" => "@scholarszone",
+                        "url" => "@ScholarsGlobal_Network",
                         "color" => "text-blue-500",
                         "hover_color" => "hover:text-blue-700",
                         "enabled" => true,
